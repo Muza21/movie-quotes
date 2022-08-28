@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LanguageController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 // Route::view('/foo', 'welcome');
 Route::get('/', function () {
-	return view('welcome');
+	return view('layout');
 });
 
 Route::get('/change-locale/{locale}', [LanguageController::class, 'change'])->name('locale.change');
+
+Route::get('/admin/login', [LoginController::class, 'login'])->middleware('guest');
+Route::post('/admin/posts', [LoginController::class, 'posts'])->middleware('guest');
