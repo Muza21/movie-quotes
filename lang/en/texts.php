@@ -1,5 +1,6 @@
 <?php
 
 return [
-	'hello_world'   => 'Hello World',
+	'movie_quote'   => 'You cant handle the truth',
+	'movie_title'   => 'A Few Good Men',
 ];
