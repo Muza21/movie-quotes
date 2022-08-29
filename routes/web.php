@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPostsController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostsController;
@@ -29,3 +30,5 @@ Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.logi
 Route::get('/posts', [PostsController::class, 'index']);
 
 Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
+
+Route::get('/admin/posts/manage', [AdminPostsController::class, 'index'])->middleware('auth');
