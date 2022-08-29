@@ -23,10 +23,10 @@
     </section>
     <div>
         <div>
-            <p class="p-2 w-10 text-center rounded-full bg-white"><a href="/change-locale/en">en</a></p>
+            <p class="p-2 w-10 text-center rounded-full bg-white"><a href="{{ route('locale.change', 'en') }}">en</a></p>
         </div>
         <div>
-            <p class="p-2 w-10 text-center rounded-full bg-white"><a href="/change-locale/ka">ka</a></p>
+            <p class="p-2 w-10 text-center rounded-full bg-white"><a href="{{ route('locale.change','ka') }}">ka</a></p>
         </div>
     </div>
 </body>
