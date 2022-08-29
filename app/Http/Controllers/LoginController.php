@@ -6,12 +6,12 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
-	public function login()
+	public function index()
 	{
 		return view('login');
 	}
 
-	public function posts()
+	public function login()
 	{
 		$attributes = request()->validate([
 			'email'    => 'required|email',

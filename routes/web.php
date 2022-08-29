@@ -22,5 +22,5 @@ Route::get('/', function () {
 
 Route::get('/change-locale/{locale}', [LanguageController::class, 'change'])->name('locale.change');
 
-Route::get('/admin/login', [LoginController::class, 'login'])->middleware('guest');
-Route::post('/admin/posts', [LoginController::class, 'posts'])->middleware('guest');
+Route::get('/admin/login', [LoginController::class, 'index'])->middleware('guest');
+Route::post('/admin/posts', [LoginController::class, 'login'])->middleware('guest');
