@@ -7,13 +7,13 @@
     <title>Movie Quotes</title>
     @vite('resources/css/app.css')
 </head>
-<body class="bg-indigo-500">
+<body class="bg-neutral-700">
     <section>
         <main class="max-w-lg mx-auto mt-32 bg-slate-100 p-6 rounded-xl">
 
             <h1 class="text-center font-bold text-2xl">Log In!</h1>
 
-            <form method="POST" action="/admin/posts" class="mt-10">
+            <form method="POST" action="/admin/login" class="mt-10">
                 @csrf
         
                 <div class="mb-5">

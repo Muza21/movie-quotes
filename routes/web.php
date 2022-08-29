@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,3 +25,7 @@ Route::get('/change-locale/{locale}', [LanguageController::class, 'change'])->na
 
 Route::get('/admin/login', [LoginController::class, 'index'])->name('admin.index')->middleware('guest');
 Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.login')->middleware('guest');
+
+Route::get('/posts', [PostsController::class, 'index']);
+
+Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
