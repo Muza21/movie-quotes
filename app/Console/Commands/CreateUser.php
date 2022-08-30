@@ -29,8 +29,8 @@ class CreateUser extends Command
 	 */
 	public function handle()
 	{
-		$username = $this->askValid('Register your username', 'username', ['required', 'max:255']);
-		$email = $this->askValid('provide your email', 'email', ['required', 'min:3', 'max:255']);
+		$username = $this->askValid('Register your username', 'username', ['required', 'max:255', 'unique:users,username']);
+		$email = $this->askValid('provide your email', 'email', ['required', 'min:3', 'max:255', 'unique:users,email']);
 		$password = $this->askValid('What is the password?', 'password', ['required', 'min:7', 'max:255']);
 
 		$password = bcrypt($password);

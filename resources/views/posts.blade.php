@@ -1,13 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Movie Quotes</title>
-    @vite('resources/css/app.css')
-</head>
-<body class="bg-indigo-500">
+<x-navigation>
+    <section>
+        <div class="max-w-2xl mx-auto m-16">
+            <h1 class="text-left text-white underline text-4xl">
+                <a href="/posts">{{ __('texts.movie_title') }}</a>
+            </h1>
+        </div>
+        @if ($posts->count())
+            <x-posts-grid :posts="$posts" />
 
-</body>
-</html>
+            {{-- {{ $posts->links() }} Will be using this soon--}}
+        @else
+            <p class="text-center">No post yet. Please check back later.</p>
+        @endif
+        
+    </section>
+</x-navigation>

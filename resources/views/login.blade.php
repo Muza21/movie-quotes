@@ -1,19 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Movie Quotes</title>
-    @vite('resources/css/app.css')
-</head>
-<body class="bg-indigo-500">
+<x-navigation>
     <section>
         <main class="max-w-lg mx-auto mt-32 bg-slate-100 p-6 rounded-xl">
 
             <h1 class="text-center font-bold text-2xl">Log In!</h1>
 
-            <form method="POST" action="/admin/posts" class="mt-10">
+            <form method="POST" action="/admin/login" class="mt-10">
                 @csrf
         
                 <div class="mb-5">
@@ -58,5 +49,4 @@
 
         </main>
     </section>
-</body>
-</html>
+</x-navigation>

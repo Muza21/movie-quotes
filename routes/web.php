@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\AdminPostsController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\SessionsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,5 +24,13 @@ Route::get('/', function () {
 
 Route::get('/change-locale/{locale}', [LanguageController::class, 'change'])->name('locale.change');
 
-Route::get('/admin/login', [LoginController::class, 'index'])->name('admin.index')->middleware('guest');
-Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.login')->middleware('guest');
+Route::middleware(['guest'])->group(function () {
+	Route::get('/admin/login', [LoginController::class, 'index'])->name('admin.index');
+	Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.login');
+});
+
+Route::get('/posts', [PostsController::class, 'index'])->name('quotes.posts');
+
+Route::post('logout', [SessionsController::class, 'destroy'])->name('admin.logout')->middleware('auth');
+
+Route::get('/admin/posts/manage', [AdminPostsController::class, 'index'])->name('admin.manage')->middleware('auth');
