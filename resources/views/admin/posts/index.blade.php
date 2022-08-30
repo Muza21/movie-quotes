@@ -28,9 +28,6 @@
                                         </form>
                                     </td>
                                 </tr>
-                            {{-- @foreach ($posts as $post)
-                            
-                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
