@@ -21,7 +21,7 @@
                 <a href="{{ route('admin.manage') }}">Manage Movies</a>
             </div>
             <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                <a href="admin/posts/create">Create Movie Quote</a>
+                <a href="{{ route('admin.create') }}">Create Movie Quote</a>
             </div>
             
             <form method="POST" action="/logout">

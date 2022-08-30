@@ -3,15 +3,12 @@
             <header class="px-9 py-4 border-b border-gray-100">
                 <select name="category" id="category">
                     {{-- Here are options that are from database --}}
-                    {{-- @foreach (\App\Models\Category::all() as $category)
+                    @foreach (\App\Models\Category::all() as $category)
                         <option
-                            value="{{ $category->id }}"
-                            {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}
-                        >{{ ucwords($category->name) }}</option>
-                    @endforeach --}}
-                    <option value="action">Action</option>
-                    <option value="action">Animation</option>
-                    <option value="documentary">Documentary</option>
+                            value="{{ $category->genre }}"
+                            {{ old('genre_id') == $category->id ? 'selected' : '' }}
+                        >{{ ucwords($category->genre) }}</option>
+                    @endforeach
                 </select>
             </header>
             <div class="overflow-x-auto p-3">

@@ -34,3 +34,5 @@ Route::get('/posts', [PostsController::class, 'index'])->name('quotes.posts');
 Route::post('logout', [SessionsController::class, 'destroy'])->name('admin.logout')->middleware('auth');
 
 Route::get('/admin/posts/manage', [AdminPostsController::class, 'index'])->name('admin.manage')->middleware('auth');
+Route::get('/admin/posts/create', [AdminPostsController::class, 'create'])->name('admin.create')->middleware('auth');
+Route::post('/admin/posts/create', [AdminPostsController::class, 'store'])->name('admin.post')->middleware('auth');
