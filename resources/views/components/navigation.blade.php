@@ -9,32 +9,36 @@
 </head>
 <body class="bg-neutral-700">
     @auth
-    <nav class="md:flex md:justify-between md:items-center">
-        <div class="text-white uppercase font-semibold text-xs  hover:text-gree">
+    <nav class="md:flex md:justify-between md:items-center mt-6">
+        <div class="text-white uppercase font-semibold text-lg  hover:text-green-500">
             <a href="/">
-                <h1 class="my-2 mx-10 hover:text-green-500">Welcome, {{ auth()->user()->username }}</h1>
+                <h1 class="mx-10 hover:text-green-500">Welcome, {{ auth()->user()->username }}</h1>
             </a>
         </div>
 
-        <div class="mt-8 md:mt-0 flex items-center">
-            <div class="text-xs text-white font-bold uppercase mr-10  hover:text-green-500">
+        <div class=" md:mt-0 flex items-center">
+            <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
                 <a href="admin/posts/manage">Manage Movies</a>
             </div>
-            <div class="text-xs text-white font-bold uppercase mr-10  hover:text-green-500">
+            <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
                 <a href="admin/posts/create">Create Movie Quote</a>
             </div>
             
             <form method="POST" action="/logout">
                 @csrf
                     <button href="#" type="submit" 
-                        class="text-white uppercase font-semibold text-xs my-2 mr-10 rounded-xl hover:text-green-500"
+                        class="text-white uppercase font-semibold text-lg mr-10 rounded-xl hover:text-green-500"
                     >Log Out
                     </button>
             </form>
         </div>
+        
     </nav>
+    @else
+        <div class="flex justify-end mt-6">
+            <a href="/admin/login" class="text-white mr-10 uppercase font-semibold text-lg rounded-xl hover:text-green-500">Log In</a>
+        </div>        
     @endauth
-    </div>
 
     {{ $slot }}
 
