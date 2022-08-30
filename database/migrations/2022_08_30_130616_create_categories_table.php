@@ -14,7 +14,7 @@ return new class extends Migration {
 	{
 		Schema::create('categories', function (Blueprint $table) {
 			$table->id();
-			$table->string('genre_id')->unique();
+			$table->string('genre')->unique();
 			$table->timestamps();
 		});
 	}
