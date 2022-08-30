@@ -44,12 +44,27 @@
 
     
     <div class="fixed top-[45%] ml-5">
-        <div class="border-solid border-2 border-red-500 rounded-full">
-            <p class="p-2 w-10 text-center rounded-full bg-white"><a href="{{ route('locale.change', 'en') }}">en</a></p>
-        </div>
-        <div class="mt-2 border-solid border-2 border-red-500 rounded-full">
-            <p class="p-2 w-10 text-center rounded-full bg-white"><a href="{{ route('locale.change','ka') }}">ka</a></p>
-        </div>
+        <div class="border-solid border-2 border-white bg-white rounded-full">
+            <a href="{{ route('locale.change', 'en') }}">
+                <x-active-item :active="request()->is(route('locale.change', 'en'))">
+                    en
+                </x-active-item>
+            </a>
+        </div> 
+        {{-- <div class="border-solid border-2 border-white bg-white rounded-full">
+            <a href="{{ route('locale.change', 'en') }}">
+                <p class="p-2 w-10 text-center rounded-full text-black">
+                en
+                </p>
+            </a>
+        </div> --}}
+        <div class="border-solid border-2 border-white bg-white rounded-full mt-2">
+            <a href="{{ route('locale.change', 'ka') }}">
+                <x-active-item :active="request()->is(route('locale.change', 'ka'))">
+                    ka
+                </x-active-item>
+            </a>
+        </div> 
     </div>
     @if (session()->has('success'))
         <div x-data={show:true}

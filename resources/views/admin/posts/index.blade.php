@@ -1,37 +1,58 @@
 <x-navigation>
-    <div class="flex flex-col ml-60 mr-20 mt-24">
-        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="flex items-center">
-                                            <div class="text-sm font-medium text-gray-900">
-                                                <a href="/posts">
-                                                    Movie Title
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="/admin/posts/edit" class="text-blue-500 hover:text-blue-600">Edit</a>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+        <div class="w-full max-w-4xl mx-auto my-20 bg-white shadow-lg rounded-xl border border-gray-200">
+            <header class="px-9 py-4 border-b border-gray-100">
+                <select name="category" id="category">
+                    {{-- Here are options that are from database --}}
+                    {{-- @foreach (\App\Models\Category::all() as $category)
+                        <option
+                            value="{{ $category->id }}"
+                            {{ old('category_id', $post->category_id) == $category->id ? 'selected' : '' }}
+                        >{{ ucwords($category->name) }}</option>
+                    @endforeach --}}
+                    <option value="action">Action</option>
+                    <option value="action">Animation</option>
+                    <option value="documentary">Documentary</option>
+                </select>
+            </header>
+            <div class="overflow-x-auto p-3">
+                <table class="table-auto w-full">
+                    <tbody class="text-sm divide-y divide-gray-100">
+                        @foreach ($posts as $post)
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
+                                    <div class="font-medium text-gray-800 underline">
+                                        {{-- this will take user to the Movie's quotes --}}
+                                        <a href="/posts" class="hover:text-green-500"> 
+                                            {{ $post->title }}
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <div class="text-left text-green-500">
+                                        {{-- This will take user to create new quote of this current movie --}}
+                                        <a href="/admin/posts/edit" class="hover:text-green-600">Add Quote</a>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <div class="text-left font-medium text-orange-400">
+                                        {{-- This will take user to remove or add new quotes or edit current quotes page --}}
+                                        <a href="/admin/posts/edit" class="hover:text-orange-600">Edit</a>
+                                    </div>
+                                </td>
+                                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                    <div class="flex justify-center">
                                         <form method="POST" action="/admin/posts">
                                             @csrf
                                             @method('DELETE')
 
-                                            <button class="text-xs text-gray-400">Delete</button>
+                                            <button class="text-sm text-red-400 hover:text-red-600">Delete</button>
                                         </form>
-                                    </td>
-                                </tr>
-                        </tbody>
-                    </table>
-                </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div>
 </x-navigation>
