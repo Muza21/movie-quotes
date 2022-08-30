@@ -18,7 +18,7 @@
 
         <div class=" md:mt-0 flex items-center">
             <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                <a href="admin/posts/manage">Manage Movies</a>
+                <a href="{{ route('admin.manage') }}">Manage Movies</a>
             </div>
             <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
                 <a href="admin/posts/create">Create Movie Quote</a>
@@ -36,7 +36,7 @@
     </nav>
     @else
         <div class="flex justify-end mt-6">
-            <a href="/admin/login" class="text-white mr-10 uppercase font-semibold text-lg rounded-xl hover:text-green-500">Log In</a>
+            <a href="{{ route('admin.index') }}" class="text-white mr-10 uppercase font-semibold text-lg rounded-xl hover:text-green-500">Log In</a>
         </div>        
     @endauth
 

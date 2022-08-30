@@ -27,8 +27,8 @@ Route::get('/change-locale/{locale}', [LanguageController::class, 'change'])->na
 Route::get('/admin/login', [LoginController::class, 'index'])->name('admin.index')->middleware('guest');
 Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.login')->middleware('guest');
 
-Route::get('/posts', [PostsController::class, 'index'])->name('posts');
+Route::get('/posts', [PostsController::class, 'index'])->name('quotes.posts');
 
-Route::post('logout', [SessionsController::class, 'destroy'])->middleware('auth');
+Route::post('logout', [SessionsController::class, 'destroy'])->name('admin.logout')->middleware('auth');
 
-Route::get('/admin/posts/manage', [AdminPostsController::class, 'index'])->middleware('auth');
+Route::get('/admin/posts/manage', [AdminPostsController::class, 'index'])->name('admin.manage')->middleware('auth');
