@@ -14,7 +14,7 @@ return new class extends Migration {
 	{
 		Schema::create('posts', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('genre');
+			$table->foreignId('genre')->constrained();
 			$table->string('quote');
 			$table->string('title');
 			$table->string('slug')->unique();
