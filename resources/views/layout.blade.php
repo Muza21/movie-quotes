@@ -7,10 +7,9 @@
             <q class="text-white text-4xl">{{ __('texts.movie_quote') }}</q>
         </div>
         <div class="max-w-2xl mx-auto rounded-xl mt-12">
-                <h1 class="text-center text-white underline text-4xl">
-                    <a href="/posts">{{ __('texts.movie_title') }}</a>
-                </h1>
+            <h1 class="text-center text-white underline text-4xl">
+                <a href="/posts">{{ __('texts.movie_title') }}</a>
+            </h1>
         </div>
     </section>
 </x-navigation>
-   

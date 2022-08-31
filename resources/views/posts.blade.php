@@ -8,10 +8,9 @@
         @if ($posts->count())
             <x-posts-grid :posts="$posts" />
 
-            {{-- {{ $posts->links() }} Will be using this soon--}}
+            {{-- {{ $posts->links() }} Will be using this soon --}}
         @else
             <p class="text-center">No post yet. Please check back later.</p>
         @endif
-        
     </section>
 </x-navigation>
