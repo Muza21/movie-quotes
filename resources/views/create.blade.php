@@ -3,7 +3,7 @@
         <main class="max-w-lg mx-auto mt-14 bg-slate-100 p-6 rounded-xl">
 
 
-            <form method="POST" action="/admin/posts/create" class="mt-10">
+            <form method="POST" action="/admin/posts/create" enctype="multipart/form-data" class="mt-10">
                 @csrf
         
                 <div class="mb-5">
@@ -38,12 +38,12 @@
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
                 </div>
-                <select name="category" id="category" class="py-2 mb-2">
+                <select name="category_id" id="category_id" class="py-2 mb-2">
                     {{-- Here are options that are from database --}}
                     @foreach (\App\Models\Category::all() as $category)
                         <option
                             value="{{ $category->id }}"
-                            {{ old('genre_id') == $category->id ? 'selected' : '' }}
+                            {{ old('category_id') == $category->id ? 'selected' : '' }}
                         >{{ ucwords($category->genre) }}</option>
                     @endforeach
                 </select>

@@ -6,7 +6,7 @@
                     @foreach (\App\Models\Category::all() as $category)
                         <option
                             value="{{ $category->genre }}"
-                            {{ old('genre_id') == $category->id ? 'selected' : '' }}
+                            {{ old('category_id') == $category->id ? 'selected' : '' }}
                         >{{ ucwords($category->genre) }}</option>
                     @endforeach
                 </select>
