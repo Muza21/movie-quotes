@@ -16,10 +16,7 @@ class LoginController extends Controller
 
 	public function login(UserLoginRequest $request): RedirectResponse
 	{
-		$attributes = $request->validate([
-			'email'    => 'required|email',
-			'password' => 'required',
-		]);
+		$attributes = $request->rules();
 
 		if (!auth()->attempt($attributes))
 		{
