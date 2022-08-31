@@ -23,7 +23,7 @@ class AdminPostsController extends Controller
 
 	public function store(QuotePostRequest $request): RedirectResponse
 	{
-		$attributes = $request->rules();
+		$attributes = $request->validated();
 
 		$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		Post::create([

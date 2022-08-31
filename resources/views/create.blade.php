@@ -31,7 +31,6 @@ use App\Models\Category;
                     @enderror
                 </div>
                 <select name="category_id" id="category_id" class="py-2 mb-2">
-                    {{-- Here are options that are from database --}}
                     @foreach (Category::all() as $category)
                         <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
                             {{ ucwords($category->genre) }}</option>

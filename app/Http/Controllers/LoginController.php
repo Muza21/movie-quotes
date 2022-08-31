@@ -16,9 +16,8 @@ class LoginController extends Controller
 
 	public function login(UserLoginRequest $request): RedirectResponse
 	{
-		$attributes = $request->rules();
-
-		if (!auth()->attempt($attributes))
+		$validation = $request->validated();
+		if (!auth()->attempt($validation))
 		{
 			throw ValidationException::withMessages([
 				'email'=> 'Your provided credentials could not be identified.',
