@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\QuotePostRequest;
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class AdminPostsController extends Controller
 {
@@ -19,10 +21,9 @@ class AdminPostsController extends Controller
 		return view('create');
 	}
 
-	public function store()
+	public function store(QuotePostRequest $request): RedirectResponse
 	{
-		// ddd(Post::get(['genre_id' => 2]));
-		$attributes = request()->validate([
+		$attributes = $request->validate([
 			'title'                 => 'required',
 			'slug'                  => 'required',
 			'category_id'           => 'required',
@@ -30,7 +31,6 @@ class AdminPostsController extends Controller
 			'thumbnail'             => ['required', 'image'],
 		]);
 
-		// ddd($attributes);
 		$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		Post::create([
 			'title'        => $attributes['title'],
