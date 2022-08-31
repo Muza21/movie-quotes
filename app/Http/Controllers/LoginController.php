@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\PostStoreRequest;
+use App\Http\Requests\UserLoginRequest;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Validation\ValidationException;
@@ -14,14 +14,10 @@ class LoginController extends Controller
 		return view('login');
 	}
 
-	public function login(PostStoreRequest $request): RedirectResponse
+	public function login(UserLoginRequest $request): RedirectResponse
 	{
-		$attributes = $request->validate([
-			'email'    => 'required|email',
-			'password' => 'required',
-		]);
-
-		if (!auth()->attempt($attributes))
+		$validation = $request->validated();
+		if (!auth()->attempt($validation))
 		{
 			throw ValidationException::withMessages([
 				'email'=> 'Your provided credentials could not be identified.',

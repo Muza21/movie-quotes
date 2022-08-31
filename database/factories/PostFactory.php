@@ -18,10 +18,10 @@ class PostFactory extends Factory
 	public function definition()
 	{
 		return [
-			'genre' => Category::factory(),
-			'title' => $this->faker->sentence(),
-			'slug'  => $this->faker->slug,
-			'quote' => $this->faker->sentence(),
+			'category_id' => Category::factory(),
+			'title'       => $this->faker->sentence(),
+			'slug'        => $this->faker->slug,
+			'quote'       => $this->faker->sentence(),
 		];
 	}
 }
