@@ -16,7 +16,7 @@ class AdminPostsController extends Controller
 		]);
 	}
 
-	public function create(): View
+	public function get(): View
 	{
 		return view('create');
 	}

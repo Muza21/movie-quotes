@@ -1,3 +1,6 @@
+@php
+use App\Models\Category;
+@endphp
 <x-navigation>
     <section>
         <main class="max-w-lg mx-auto mt-14 bg-slate-100 p-6 rounded-xl">
