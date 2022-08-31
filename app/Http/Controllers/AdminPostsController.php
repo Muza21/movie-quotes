@@ -16,11 +16,6 @@ class AdminPostsController extends Controller
 		]);
 	}
 
-	public function get(): View
-	{
-		return view('create');
-	}
-
 	public function store(QuotePostRequest $request): RedirectResponse
 	{
 		$attributes = $request->validated();
