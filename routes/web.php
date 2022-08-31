@@ -35,6 +35,6 @@ Route::post('logout', [SessionsController::class, 'destroy'])->name('admin.logou
 
 Route::middleware(['auth'])->group(function () {
 	Route::get('/admin/posts/manage', [AdminPostsController::class, 'index'])->name('admin.manage');
-	Route::get('/admin/posts/create', [AdminPostsController::class, 'get'])->name('admin.create');
+	Route::get('/admin/posts', [AdminPostsController::class, 'get'])->name('admin.create');
 	Route::post('/admin/posts/create', [AdminPostsController::class, 'store'])->name('admin.post');
 });
