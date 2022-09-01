@@ -1,5 +1,6 @@
 @php
 use App\Models\Category;
+use App\Models\Movie;
 @endphp
 <x-navigation>
     <section>
@@ -9,15 +10,21 @@ use App\Models\Category;
             <form method="POST" action="{{ route('admin.post') }}" enctype="multipart/form-data" class="mt-10">
                 @csrf
 
-                <div class="mb-5">
-                    <label for="title">Movie Title</label>
-
-                    <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="title"
+                <div class="flex justify-between mb-5">
+                    <label for="title_id">Movie Title</label>
+                    <select name="title_id" id="title_id" class="py-2 px-20 mb-2">
+                        @foreach (Movie::all() as $movie)
+                            <option value="{{ $movie->id }}"
+                                {{ old('category_id') == $movie->id ? 'selected' : '' }}>
+                                {{ ucwords($movie->title) }}</option>
+                        @endforeach
+                    </select>
+                    {{-- <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="title"
                         id="title" value="{{ old('email') }}" required>
 
                     @error('title')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
+                    @enderror --}}
                 </div>
 
                 <div class="mb-6">
@@ -30,12 +37,16 @@ use App\Models\Category;
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
                 </div>
-                <select name="category_id" id="category_id" class="py-2 mb-2">
-                    @foreach (Category::all() as $category)
-                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
-                            {{ ucwords($category->genre) }}</option>
-                    @endforeach
-                </select>
+                <div class="flex justify-between mb-5">
+                    <label for="title_id">Genre</label>
+                    <select name="category_id" id="category_id" class="py-2 px-20 mb-2">
+                        @foreach (Category::all() as $category)
+                            <option value="{{ $category->id }}"
+                                {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                {{ ucwords($category->genre) }}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <div class="mb-6">
                     <label for="quote">Quote</label>
 

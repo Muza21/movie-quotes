@@ -11,7 +11,7 @@
 
 <body class="bg-neutral-700">
     @auth
-        <nav class="md:flex md:justify-between md:items-center mt-6">
+        <nav class="flex justify-between items-center mt-6">
             <div class="text-white uppercase font-semibold text-lg  hover:text-green-500">
                 <a href="/">
                     <h1 class="mx-10 hover:text-green-500">Welcome, {{ auth()->user()->username }}</h1>

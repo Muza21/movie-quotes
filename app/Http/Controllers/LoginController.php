@@ -24,6 +24,6 @@ class LoginController extends Controller
 			]);
 		}
 
-		return redirect('posts')->with('success', 'Welcome Back!');
+		return redirect('/');
 	}
 }
