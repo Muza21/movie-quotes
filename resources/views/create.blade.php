@@ -8,10 +8,12 @@ use App\Models\Category;
 
             <form method="POST" action="{{ route('post.quote') }}" enctype="multipart/form-data" class="mt-10">
                 @csrf
-
+                <header class="text-center font-bold text-xl pb-6 mb-6 border-b-2 border-gray-300">
+                    <h2>Add Quote</h2>
+                </header>
                 <div class="flex justify-between mb-5">
                     <label for="title_id">Movie Title</label>
-                    <select name="title_id" id="title_id" class="py-2 px-20 mb-2" required>
+                    <select name="title_id" id="title_id" class="py-2 pl-4 pr-28 mb-2" required>
                         @foreach (Category::all() as $category)
                             <option value="{{ $category->id }}"
                                 {{ old('category_id') == $category->id ? 'selected' : '' }}>

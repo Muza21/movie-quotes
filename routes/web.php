@@ -35,7 +35,6 @@ Route::get('/posts/{category}', function (Category $category) {
 	return view('posts', [
 		'posts'    => $category->posts,
 		'post'     => Post::all()->find($category->id),
-		'category' => Category::all()->find($category->id),
 	]);
 });
 
@@ -45,6 +44,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/admin/movies/manage', [AdminPostsController::class, 'index'])->name('manage.movies');
 	Route::view('/admin/movies', 'add-movie')->name('add.movie');
 	Route::post('/admin/movies/create', [AdminPostsController::class, 'storeMovie'])->name('post.movie');
+	Route::get('/admin/movies/{post}/edit', [AdminPostsController::class, 'edit'])->name('edit.movie');
 
 	Route::get('/admin/quote/manage', [AdminPostsController::class, 'quoteIndex'])->name('manage.quote');
 	Route::view('/admin/quote', 'create')->name('create.quote');

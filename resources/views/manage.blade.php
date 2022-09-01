@@ -4,6 +4,7 @@ use App\Models\Category;
 <x-navigation>
     <div class="w-full max-w-4xl mx-auto my-20 bg-white shadow-lg rounded-xl border border-gray-200">
         <header class="px-9 py-4 border-b border-gray-100">
+            <h2 class="font-bold text-lg text-center">Manage Quotes</h2>
             <select name="category" id="category" class="px-9 py-2">
                 @foreach (Category::all() as $category)
                     <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
@@ -18,19 +19,20 @@ use App\Models\Category;
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
                                 <div class="font-medium text-gray-800 underline">
-                                    <a href="/posts" class="hover:text-green-500">
+                                    <a href="/posts/{{ $post->category->id }}" class="hover:text-green-500">
                                         {{ $post->quote }}
                                     </a>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="text-left text-green-500">
-                                    <a href="/admin/posts/edit" class="hover:text-green-600">Add Quote</a>
+                                    <a href="/admin/posts/edit" class="hover:text-green-600">View</a>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="text-left font-medium text-orange-400">
-                                    <a href="/admin/posts/edit" class="hover:text-orange-600">Edit</a>
+                                    <a href="/admin/posts/{{ $post->id }}/edit"
+                                        class="hover:text-orange-600">Edit</a>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">

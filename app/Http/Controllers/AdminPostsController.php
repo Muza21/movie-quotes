@@ -50,4 +50,11 @@ class AdminPostsController extends Controller
 
 		return redirect('/');
 	}
+
+	public function edit(Post $post): View
+	{
+		return view('admin.posts.edit-movie', [
+			'post' => $post,
+		]);
+	}
 }
