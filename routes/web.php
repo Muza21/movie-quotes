@@ -5,6 +5,7 @@ use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\SessionsController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +35,17 @@ Route::get('/posts', [PostsController::class, 'index'])->name('quotes.posts');
 Route::post('logout', [SessionsController::class, 'destroy'])->name('admin.logout')->middleware('auth');
 
 Route::middleware(['auth'])->group(function () {
-	Route::get('/admin/posts/manage', [AdminPostsController::class, 'index'])->name('admin.manage');
-	Route::view('/admin/posts', 'create')->name('admin.create');
-	Route::post('/admin/posts/create', [AdminPostsController::class, 'store'])->name('admin.post');
+	Route::get('/admin/movies/manage', [AdminPostsController::class, 'index'])->name('manage.movies');
+	Route::view('/admin/movies', 'add-movie')->name('add.movie');
+	Route::post('/admin/movies/create', [AdminPostsController::class, 'storeMovie'])->name('post.movie');
+
+	Route::get('/admin/quote/manage', [AdminPostsController::class, 'quoteIndex'])->name('manage.quote');
+	Route::view('/admin/quote', 'create')->name('create.quote');
+	Route::post('/admin/quote/create', [AdminPostsController::class, 'store'])->name('post.quote');
+});
+
+Route::get('categories/{category}', function (Category $category) {
+	return view('posts', [
+		'posts' => $category->posts,
+	]);
 });

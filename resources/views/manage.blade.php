@@ -3,6 +3,14 @@ use App\Models\Category;
 @endphp
 <x-navigation>
     <div class="w-full max-w-4xl mx-auto my-20 bg-white shadow-lg rounded-xl border border-gray-200">
+        <header class="px-9 py-4 border-b border-gray-100">
+            <select name="category" id="category" class="px-9 py-2">
+                @foreach (Category::all() as $category)
+                    <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                        {{ ucwords($category->title) }}</option>
+                @endforeach
+            </select>
+        </header>
         <div class="overflow-x-auto p-3">
             <table class="table-auto w-full">
                 <tbody class="text-sm divide-y divide-gray-100">
@@ -11,7 +19,7 @@ use App\Models\Category;
                             <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
                                 <div class="font-medium text-gray-800 underline">
                                     <a href="/posts" class="hover:text-green-500">
-                                        {{ $post->title }}
+                                        {{ $post->quote }}
                                     </a>
                                 </div>
                             </td>

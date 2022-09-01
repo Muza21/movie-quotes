@@ -20,11 +20,18 @@
 
             <div class=" md:mt-0 flex items-center">
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <a href="{{ route('admin.manage') }}">Manage Movies</a>
+                    <a href="{{ route('manage.movies') }}">Manage Movies</a>
                 </div>
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <a href="{{ route('admin.create') }}">Create Movie Quote</a>
+                    <a href="{{ route('manage.quote') }}">Manage Quotes</a>
                 </div>
+                <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
+                    <a href="{{ route('add.movie') }}">Add Movie</a>
+                </div>
+                <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
+                    <a href="{{ route('create.quote') }}">Add Quote</a>
+                </div>
+
 
                 <form method="POST" action="/logout">
                     @csrf

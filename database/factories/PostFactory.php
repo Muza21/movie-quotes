@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Category;
-use App\Models\Movie;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +19,6 @@ class PostFactory extends Factory
 	{
 		return [
 			'category_id'    => Category::factory(),
-			'title_id'       => Movie::factory(),
 			'slug'           => $this->faker->slug,
 			'quote'          => $this->faker->sentence(),
 		];
