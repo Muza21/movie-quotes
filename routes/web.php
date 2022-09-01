@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\SessionsController;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-	return view('layout');
-});
+Route::get('/', [PostsController::class, 'show']);
 
 Route::get('/change-locale/{locale}', [LanguageController::class, 'change'])->name('locale.change');
 
@@ -30,7 +29,14 @@ Route::middleware(['guest'])->group(function () {
 	Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.login');
 });
 
-Route::get('/posts', [PostsController::class, 'index'])->name('quotes.posts');
+// Route::get('/posts', [PostsController::class, 'index'])->name('quotes.posts');
+
+Route::get('/posts/{category}', function (Category $category) {
+	return view('posts', [
+		'posts' => $category->posts,
+		'post'  => Post::all()->find($category->id),
+	]);
+});
 
 Route::post('logout', [SessionsController::class, 'destroy'])->name('admin.logout')->middleware('auth');
 

@@ -2,7 +2,8 @@
     <section>
         <div class="max-w-2xl mx-auto m-16">
             <h1 class="text-left text-white underline text-4xl">
-                <a href="{{ route('quotes.posts') }}">{{ __('texts.movie_title') }}</a>
+                <a href="/posts/{{ $post->category_id }}">{{ $post->category->title }}</a>
+                {{-- <a href="{{ route('quotes.posts') }}">{{ __('texts.movie_title') }}</a> --}}
             </h1>
         </div>
         @if ($posts->count())
