@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\QuotePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
@@ -24,35 +23,32 @@ class AdminPostsController extends Controller
 		]);
 	}
 
-	public function store(QuotePostRequest $request): RedirectResponse
+	public function store(): RedirectResponse
 	{
-		$attributes = $request->validated();
+		ddd(request()->all());
 
+		// $attributes = $request->validated();
 		$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		Post::create([
-			'title'        => $attributes['title'],
 			'slug'         => $attributes['slug'],
 			'category_id'  => $attributes['category_id'],
 			'quote'        => $attributes['quote'],
 			'thumbnail'    => $attributes['thumbnail'],
 		]);
 
-		return redirect('/posts');
+		return redirect('/');
+		// ->with('success', 'Successfuly added');
 	}
 
-	public function storeMovie(QuotePostRequest $request): RedirectResponse
+	public function storeMovie(): RedirectResponse
 	{
-		$attributes = $request->validated();
-
-		$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+		$attributes = request()->all();
+		ddd($attributes);
 		Post::create([
 			'title'        => $attributes['title'],
 			'slug'         => $attributes['slug'],
-			'category_id'  => $attributes['category_id'],
-			'quote'        => $attributes['quote'],
-			'thumbnail'    => $attributes['thumbnail'],
 		]);
 
-		return redirect('/posts');
+		return redirect('/');
 	}
 }

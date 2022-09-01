@@ -24,7 +24,6 @@ class QuotePostRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'title'                 => 'required',
 			'slug'                  => 'required',
 			'category_id'           => 'required',
 			'quote'                 => 'required',

@@ -18,7 +18,8 @@ class PostsController extends Controller
 
 	public function show(Post $post): View
 	{
-		$random = rand(1, Category::all()->count());
+		// here needs fixing
+		$random = rand(Category::all()->first()->id, Category::all()->count());
 		// ddd($random);
 		// ddd(Post::all()->first()->category);
 

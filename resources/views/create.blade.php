@@ -25,17 +25,6 @@ use App\Models\Category;
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                     @enderror --}}
                 </div>
-
-                <div class="mb-6">
-                    <label for="slug">Slug</label>
-
-                    <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="slug"
-                        id="slug" required>
-
-                    @error('slug')
-                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
                 <div class="mb-6">
                     <label for="quote">Quote</label>
 
@@ -46,6 +35,17 @@ use App\Models\Category;
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
                 </div>
+                <div class="mb-6">
+                    <label for="slug">Slug</label>
+
+                    <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="slug"
+                        id="slug" required>
+
+                    @error('slug')
+                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                    @enderror
+                </div>
+
                 <div class="mb-6">
                     <label for="thumbnail">Thumbnail</label>
 
@@ -61,9 +61,7 @@ use App\Models\Category;
                     class="bg-green-500 text-white uppercase font-semibold text-xs py-2 px-6 rounded-xl hover:bg-green-600">
                     Create
                 </button>
-
             </form>
-
         </main>
     </section>
 </x-navigation>

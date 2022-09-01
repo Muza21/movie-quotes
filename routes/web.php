@@ -47,11 +47,11 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('/admin/quote/manage', [AdminPostsController::class, 'quoteIndex'])->name('manage.quote');
 	Route::view('/admin/quote', 'create')->name('create.quote');
-	Route::post('/admin/quote/create', [AdminPostsController::class, 'store'])->name('post.quote');
+	Route::post('/admin/quote-create', [AdminPostsController::class, 'store'])->name('post.quote');
 });
 
-Route::get('categories/{category}', function (Category $category) {
-	return view('posts', [
-		'posts' => $category->posts,
-	]);
-});
+// Route::get('categories/{category}', function (Category $category) {
+// 	return view('posts', [
+// 		'posts' => $category->posts,
+// 	]);
+// });
