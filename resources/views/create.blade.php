@@ -11,7 +11,7 @@ use App\Models\Category;
 
                 <div class="flex justify-between mb-5">
                     <label for="title_id">Movie Title</label>
-                    <select name="title_id" id="title_id" class="py-2 px-20 mb-2">
+                    <select name="title_id" id="title_id" class="py-2 px-20 mb-2" required>
                         @foreach (Category::all() as $category)
                             <option value="{{ $category->id }}"
                                 {{ old('category_id') == $category->id ? 'selected' : '' }}>

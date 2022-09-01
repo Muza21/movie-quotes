@@ -33,8 +33,9 @@ Route::middleware(['guest'])->group(function () {
 
 Route::get('/posts/{category}', function (Category $category) {
 	return view('posts', [
-		'posts' => $category->posts,
-		'post'  => Post::all()->find($category->id),
+		'posts'    => $category->posts,
+		'post'     => Post::all()->find($category->id),
+		'category' => Category::all()->find($category->id),
 	]);
 });
 

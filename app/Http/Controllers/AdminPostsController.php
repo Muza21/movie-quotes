@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MoviePostRequest;
+use App\Http\Requests\QuotePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
@@ -23,28 +25,25 @@ class AdminPostsController extends Controller
 		]);
 	}
 
-	public function store(): RedirectResponse
+	public function store(QuotePostRequest $request): RedirectResponse
 	{
-		ddd(request()->all());
+		// ddd(request()->all());
+		// ddd($request->validated());
 
-		// $attributes = $request->validated();
+		$attributes = $request->validated();
+		$attributes = $attributes + ['category_id' => request()->title_id];
+		// dd($attributes);
 		$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
-		Post::create([
-			'slug'         => $attributes['slug'],
-			'category_id'  => $attributes['category_id'],
-			'quote'        => $attributes['quote'],
-			'thumbnail'    => $attributes['thumbnail'],
-		]);
+		Post::create($attributes);
 
 		return redirect('/');
 		// ->with('success', 'Successfuly added');
 	}
 
-	public function storeMovie(): RedirectResponse
+	public function storeMovie(MoviePostRequest $request): RedirectResponse
 	{
-		$attributes = request()->all();
-		ddd($attributes);
-		Post::create([
+		$attributes = $request->validated();
+		Category::create([
 			'title'        => $attributes['title'],
 			'slug'         => $attributes['slug'],
 		]);
