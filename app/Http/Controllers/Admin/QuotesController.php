@@ -18,14 +18,17 @@ class QuotesController extends Controller
 		]);
 	}
 
-	public function store(): RedirectResponse
+	public function store(QuotePostRequest $request): RedirectResponse
 	{
-		ddd(request()->all());
-		// ddd($request->validated());
-
-		// $attributes = $request->validated();
-		// $attributes = $attributes + ['category_id' => request()->title_id];
+		$attributes = $request->validated();
+		// // $attributes = $attributes + ['category_id' => request()->title_id];
 		// ddd($attributes);
+		Post::create([
+			'quote'       => $attributes['quote'],
+			'slug'        => $attributes['slug'],
+			'category_id' => $attributes['title_id'],
+			'thumbnail'   => request()->file('thumbnail')->store('thumbnails'),
+		]);
 		// $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		// Post::create($attributes);
 

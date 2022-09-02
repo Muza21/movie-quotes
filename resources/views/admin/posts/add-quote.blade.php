@@ -15,8 +15,7 @@ use App\Models\Category;
                     <label for="title_id">Movie Title</label>
                     <select name="title_id" id="title_id" class="py-2 pl-4 pr-28 mb-2" required>
                         @foreach (Category::all() as $category)
-                            <option value="{{ $category->id }}"
-                                {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                            <option value="{{ $category->id }}">
                                 {{ ucwords($category->title) }}</option>
                         @endforeach
                     </select>
