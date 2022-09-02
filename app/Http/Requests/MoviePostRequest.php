@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class MoviePostRequest extends FormRequest
 {
@@ -13,9 +14,10 @@ class MoviePostRequest extends FormRequest
 	 */
 	public function rules()
 	{
+		// if slug is not updated it gives an error, so it needs ignore rule
 		return [
 			'title'                  => 'required',
-			'slug'                   => 'required',
+			'slug'                   => ['required', Rule::unique('categories', 'slug')],
 		];
 	}
 }

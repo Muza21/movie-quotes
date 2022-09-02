@@ -35,14 +35,18 @@ class MoviesController extends Controller
 		]);
 	}
 
-	public function update(MoviePostRequest $request, Category $category)
+	public function update(MoviePostRequest $request, $category): RedirectResponse
 	{
 		$attributes = $request->validated();
-		$category->update([
-			'title'        => $attributes['title'],
-			'slug'         => $attributes['slug'],
-		]);
+		Category::find($category)->update($attributes);
 
-		return redirect('/');
+		return redirect(route('manage.movies'))->with('success', 'Successfully Updated');
+	}
+
+	public function destroy($category)
+	{
+		// dd(Category::find($category));
+		Category::find($category)->delete();
+		return redirect(route('manage.movies'))->with('success', 'Successfully Deleted');
 	}
 }

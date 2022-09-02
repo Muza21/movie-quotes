@@ -32,7 +32,7 @@ use App\Models\Category;
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="flex justify-center">
-                                    <form method="POST" action="/admin/posts">
+                                    <form method="POST" action="{{ route('delete.movie', $post->id) }}">
                                         @csrf
                                         @method('DELETE')
 
@@ -46,4 +46,5 @@ use App\Models\Category;
             </table>
         </div>
     </div>
+    <x-flash />
 </x-navigation>

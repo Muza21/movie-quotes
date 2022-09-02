@@ -36,12 +36,13 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/movies/create', [MoviesController::class, 'store'])->name('post.movie');
 	Route::get('/movies/{post}/edit', [MoviesController::class, 'edit'])->name('edit.movie');
 	Route::patch('/movies/{post}', [MoviesController::class, 'update'])->name('update.movie');
+	Route::delete('/movies/{post}', [MoviesController::class, 'destroy'])->name('delete.movie');
 
 	Route::get('/quote/manage', [QuotesController::class, 'index'])->name('manage.quote');
 	Route::view('/quote', 'admin.posts.add-quote')->name('create.quote');
 	Route::post('/quote-create', [QuotesController::class, 'store'])->name('post.quote');
 	Route::get('/quote/{post}/edit', [QuotesController::class, 'edit'])->name('edit.quote');
-	Route::patch('/quote/{post}', [MoviesController::class, 'update'])->name('update.quote');
+	Route::patch('/quote/{post}', [QuotesController::class, 'update'])->name('update.quote');
 
 	Route::post('logout', [SessionsController::class, 'destroy'])->name('admin.logout');
 });
