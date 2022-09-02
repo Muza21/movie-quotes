@@ -17,6 +17,7 @@ class QuotePostRequest extends FormRequest
 			'slug'                  => 'required',
 			'quote'                 => 'required',
 			'thumbnail'             => ['required', 'image'],
+			// 'category_id'           => 'required|exists:categories,id',
 		];
 	}
 }

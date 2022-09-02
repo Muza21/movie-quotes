@@ -6,7 +6,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\SessionsController;
 use App\Models\Category;
-use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,35 +19,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [PostsController::class, 'show']);
+Route::get('/', [PostsController::class, 'index'])->name('random.quote');
 
 Route::get('/change-locale/{locale}', [LanguageController::class, 'change'])->name('locale.change');
 
 Route::middleware(['guest'])->group(function () {
-	Route::get('/admin/login', [LoginController::class, 'index'])->name('admin.index');
-	Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.login');
+	Route::view('login', 'login')->name('admin.index');
+	Route::post('login', [LoginController::class, 'login'])->name('admin.login');
 });
 
 // Route::get('/posts', [PostsController::class, 'index'])->name('quotes.posts');
 
-Route::get('/posts/{category}', function (Category $category) {
-	return view('posts', [
-		'posts'    => $category->posts,
-		'post'     => Post::all()->find($category->id),
+Route::get('/quotes/{category}', function (Category $category) {
+	return view('quotes', [
+		'quotes'        => Category::all()->find($category)->posts,
+		'movie'         => Category::all()->find($category),
 	]);
-});
-
-Route::post('logout', [SessionsController::class, 'destroy'])->name('admin.logout')->middleware('auth');
+})->name('movie.quotes');
 
 Route::middleware(['auth'])->group(function () {
 	Route::get('/admin/movies/manage', [AdminPostsController::class, 'index'])->name('manage.movies');
 	Route::view('/admin/movies', 'add-movie')->name('add.movie');
 	Route::post('/admin/movies/create', [AdminPostsController::class, 'storeMovie'])->name('post.movie');
 	Route::get('/admin/movies/{post}/edit', [AdminPostsController::class, 'edit'])->name('edit.movie');
+	Route::patch('/admin/movies/{post}', [AdminPostsController::class, 'update'])->name('update.movie');
 
 	Route::get('/admin/quote/manage', [AdminPostsController::class, 'quoteIndex'])->name('manage.quote');
 	Route::view('/admin/quote', 'create')->name('create.quote');
 	Route::post('/admin/quote-create', [AdminPostsController::class, 'store'])->name('post.quote');
+
+	Route::post('logout', [SessionsController::class, 'destroy'])->name('admin.logout');
 });
 
 // Route::get('categories/{category}', function (Category $category) {

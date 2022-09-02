@@ -32,7 +32,7 @@ class AdminPostsController extends Controller
 
 		$attributes = $request->validated();
 		$attributes = $attributes + ['category_id' => request()->title_id];
-		// dd($attributes);
+		// ddd($attributes);
 		$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		Post::create($attributes);
 
@@ -56,5 +56,16 @@ class AdminPostsController extends Controller
 		return view('admin.posts.edit-movie', [
 			'post' => $post,
 		]);
+	}
+
+	public function update(MoviePostRequest $request, Category $category)
+	{
+		$attributes = $request->validated();
+		$category->update([
+			'title'        => $attributes['title'],
+			'slug'         => $attributes['slug'],
+		]);
+
+		return redirect('/');
 	}
 }
