@@ -1,6 +1,6 @@
 @props(['post'])
 
-<div class="bg-white max-w-3xl mx-auto rounded-xl mb-20 overflow-hidden">
+<div class="bg-white max-w-xl mx-auto rounded-xl mb-20 overflow-hidden">
     <div>
         <img src="{{ asset('storage/' . $post->thumbnail) }}" class="max-w-full max-h-full" alt="">
     </div>

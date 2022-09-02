@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\QuotePostRequest;
+use App\Http\Requests\QuoteStoreRequest;
+use App\Http\Requests\QuoteUpdateRequest;
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -18,19 +19,16 @@ class QuotesController extends Controller
 		]);
 	}
 
-	public function store(QuotePostRequest $request): RedirectResponse
+	public function store(QuoteStoreRequest $request): RedirectResponse
 	{
 		$attributes = $request->validated();
-		// // $attributes = $attributes + ['category_id' => request()->title_id];
-		// ddd($attributes);
+
 		Post::create([
 			'quote'       => $attributes['quote'],
 			'slug'        => $attributes['slug'],
 			'category_id' => $attributes['title_id'],
 			'thumbnail'   => request()->file('thumbnail')->store('thumbnails'),
 		]);
-		// $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
-		// Post::create($attributes);
 
 		return redirect('/');
 		// ->with('success', 'Successfuly added');
@@ -43,19 +41,30 @@ class QuotesController extends Controller
 		]);
 	}
 
-	public function update(QuotePostRequest $request, Post $post)
+	public function update(QuoteUpdateRequest $request, Post $post): RedirectResponse
 	{
 		$attributes = $request->validated();
-		// ddd($attributes);
-		$post->update([
-			'title'        => $attributes['title'],
-			'slug'         => $attributes['slug'],
+
+		if (!isset($attributes['thumbnail']))
+		{
+			$attributes['thumbnail'] = $post->thumbnail;
+		}
+		else
+		{
+			$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+		}
+
+		Post::create([
+			'quote'       => $attributes['quote'],
+			'slug'        => $attributes['slug'],
+			'category_id' => $attributes['title_id'],
+			'thumbnail'   => $attributes['thumbnail'],
 		]);
 
 		return redirect('/');
 	}
 
-	public function destroy($id)
+	public function destroy($id): RedirectResponse
 	{
 		Post::find($id)->delete();
 		return redirect(route('manage.quote'))->with('success', 'Successfully Deleted');

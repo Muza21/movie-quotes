@@ -52,9 +52,11 @@ use App\Models\Category;
                 <div class="mb-6">
                     <label for="thumbnail">Thumbnail</label>
 
-                    <input class="border border-gray-400 p-2 w-full rounded-xl" type="file" name="thumbnail"
-                        id="thumbnail" value="{{ old('thumbnail', $quote->thumbnail) }}">
-
+                    <div class="flex">
+                        <input class="border border-gray-400 p-2 w-full rounded-xl" type="file" name="thumbnail"
+                            id="thumbnail" value="{{ old('thumbnail', $quote->thumbnail) }}">
+                        <img src="{{ asset('storage/' . $quote->thumbnail) }}" class="w-28 rounded-lg" alt="">
+                    </div>
                     @error('thumbnail')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                     @enderror

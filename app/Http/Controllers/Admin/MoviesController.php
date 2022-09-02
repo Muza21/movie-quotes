@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MoviePostRequest;
+use App\Http\Requests\MovieStoreRequest;
 use App\Models\Category;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -17,7 +17,7 @@ class MoviesController extends Controller
 		]);
 	}
 
-	public function store(MoviePostRequest $request): RedirectResponse
+	public function store(MovieStoreRequest $request): RedirectResponse
 	{
 		$attributes = $request->validated();
 		Category::create([
@@ -35,7 +35,7 @@ class MoviesController extends Controller
 		]);
 	}
 
-	public function update(MoviePostRequest $request, $id): RedirectResponse
+	public function update(MovieStoreRequest $request, $id): RedirectResponse
 	{
 		$attributes = $request->validated();
 		Category::find($id)->update($attributes);
@@ -43,7 +43,7 @@ class MoviesController extends Controller
 		return redirect(route('manage.movies'))->with('success', 'Successfully Updated');
 	}
 
-	public function destroy($id)
+	public function destroy($id): RedirectResponse
 	{
 		Category::find($id)->delete();
 		return redirect(route('manage.movies'))->with('success', 'Successfully Deleted');
