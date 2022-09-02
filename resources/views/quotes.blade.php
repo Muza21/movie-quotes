@@ -11,7 +11,11 @@
 
             {{-- {{ $posts->links() }} Will be using this soon --}}
         @else
-            <p class="text-center">No post yet. Please check back later.</p>
+            <div class="max-w-2xl mx-auto m-28">
+                <h1 class="text-center text-white text-4xl font-bold">
+                    No quotes yet. Please check back later.
+                </h1>
+            </div>
         @endif
     </section>
 </x-navigation>

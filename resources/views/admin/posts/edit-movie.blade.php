@@ -6,7 +6,7 @@ use App\Models\Category;
         <main class="max-w-lg mx-auto mt-14 bg-slate-100 p-6 rounded-xl">
 
 
-            <form method="POST" action="admin/movies/{{ $post->category->id }}" enctype="multipart/form-data"
+            <form method="POST" action="{{ route('update.movie', $movie->id) }}" enctype="multipart/form-data"
                 class="mt-10">
                 @csrf
                 @method('PATCH')
@@ -19,7 +19,7 @@ use App\Models\Category;
                     <label for="title">Movie Title</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="title"
-                        id="title" value="{{ old('title', $post->category->title) }}" required>
+                        id="title" value="{{ old('title', $movie->title) }}" required>
 
                     @error('title')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -29,7 +29,7 @@ use App\Models\Category;
                     <label for="slug">Slug</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="slug"
-                        id="slug" value="{{ old('slug', $post->category->slug) }}" required>
+                        id="slug" value="{{ old('slug', $movie->slug) }}" required>
 
                     @error('slug')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>

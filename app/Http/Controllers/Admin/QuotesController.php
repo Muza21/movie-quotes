@@ -1,27 +1,20 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\MoviePostRequest;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\QuotePostRequest;
-use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
-class AdminPostsController extends Controller
+class QuotesController extends Controller
 {
 	public function index(): View
 	{
-		return view('admin.posts.index', [
-			'posts' => Category::paginate(50),
-		]);
-	}
-
-	public function quoteIndex(): View
-	{
-		return view('manage', [
-			'posts' => Post::paginate(50),
+		// ddd(Post::all());
+		return view('admin.posts.manage-quotes', [
+			'posts' => Post::all(),
 		]);
 	}
 
@@ -40,28 +33,17 @@ class AdminPostsController extends Controller
 		// ->with('success', 'Successfuly added');
 	}
 
-	public function storeMovie(MoviePostRequest $request): RedirectResponse
-	{
-		$attributes = $request->validated();
-		Category::create([
-			'title'        => $attributes['title'],
-			'slug'         => $attributes['slug'],
-		]);
-
-		return redirect('/');
-	}
-
 	public function edit(Post $post): View
 	{
-		return view('admin.posts.edit-movie', [
+		return view('admin.posts.edit-quote', [
 			'post' => $post,
 		]);
 	}
 
-	public function update(MoviePostRequest $request, Category $category)
+	public function update(QuotePostRequest $request, Post $post)
 	{
 		$attributes = $request->validated();
-		$category->update([
+		$post->update([
 			'title'        => $attributes['title'],
 			'slug'         => $attributes['slug'],
 		]);
