@@ -6,7 +6,7 @@ use App\Models\Category;
         <main class="max-w-lg mx-auto mt-14 bg-slate-100 p-6 rounded-xl">
 
 
-            <form method="POST" action="{{ route('update.quote', $post->category->id) }}" enctype="multipart/form-data"
+            <form method="POST" action="{{ route('update.quote', $quote->id) }}" enctype="multipart/form-data"
                 class="mt-10">
                 @csrf
                 @method('PATCH')
@@ -19,23 +19,20 @@ use App\Models\Category;
                     <label for="title_id">Movie Title</label>
                     <select name="title_id" id="title_id" class="py-2 pl-4 pr-28 mb-2" required>
                         @foreach (Category::all() as $category)
-                            <option value="{{ $category->id }}"
-                                {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                            <option value="{{ old('category_id', $category->id) }}"
+                                {{ old('category_id', $quote->category_id) == $category->id ? 'selected' : '' }}>
                                 {{ ucwords($category->title) }}</option>
                         @endforeach
                     </select>
-                    {{-- <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="title"
-                        id="title" value="{{ old('email') }}" required>
-
                     @error('title')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror --}}
+                    @enderror
                 </div>
                 <div class="mb-6">
                     <label for="quote">Quote</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="quote"
-                        id="quote" required>
+                        id="quote" value="{{ old('quote', $quote->quote) }}" required>
 
                     @error('quote')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -45,7 +42,7 @@ use App\Models\Category;
                     <label for="slug">Slug</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="slug"
-                        id="slug" required>
+                        id="slug" value="{{ old('slug', $quote->slug) }}" required>
 
                     @error('slug')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -56,7 +53,7 @@ use App\Models\Category;
                     <label for="thumbnail">Thumbnail</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="file" name="thumbnail"
-                        id="thumbnail" required>
+                        id="thumbnail" value="{{ old('thumbnail', $quote->thumbnail) }}">
 
                     @error('thumbnail')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>

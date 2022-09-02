@@ -11,6 +11,7 @@ class Category extends Model
 
 	protected $guarded = [];
 
+	//This is movies that has many posts(quotes)
 	public function posts()
 	{
 		return $this->hasMany(Post::class);

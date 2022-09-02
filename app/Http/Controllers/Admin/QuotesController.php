@@ -18,36 +18,43 @@ class QuotesController extends Controller
 		]);
 	}
 
-	public function store(QuotePostRequest $request): RedirectResponse
+	public function store(): RedirectResponse
 	{
-		// ddd(request()->all());
+		ddd(request()->all());
 		// ddd($request->validated());
 
-		$attributes = $request->validated();
-		$attributes = $attributes + ['category_id' => request()->title_id];
+		// $attributes = $request->validated();
+		// $attributes = $attributes + ['category_id' => request()->title_id];
 		// ddd($attributes);
-		$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
-		Post::create($attributes);
+		// $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+		// Post::create($attributes);
 
 		return redirect('/');
 		// ->with('success', 'Successfuly added');
 	}
 
-	public function edit(Post $post): View
+	public function edit($id): View
 	{
 		return view('admin.posts.edit-quote', [
-			'post' => $post,
+			'quote' => Post::all()->find($id),
 		]);
 	}
 
 	public function update(QuotePostRequest $request, Post $post)
 	{
 		$attributes = $request->validated();
+		// ddd($attributes);
 		$post->update([
 			'title'        => $attributes['title'],
 			'slug'         => $attributes['slug'],
 		]);
 
 		return redirect('/');
+	}
+
+	public function destroy($id)
+	{
+		Post::find($id)->delete();
+		return redirect(route('manage.quote'))->with('success', 'Successfully Deleted');
 	}
 }

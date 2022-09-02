@@ -11,6 +11,7 @@ class Post extends Model
 
 	protected $guarded = [];
 
+	//This is post that has one category(movie)
 	public function category()
 	{
 		return $this->belongsTo(Category::class);

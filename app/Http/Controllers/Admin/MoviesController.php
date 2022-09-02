@@ -28,25 +28,24 @@ class MoviesController extends Controller
 		return redirect('/');
 	}
 
-	public function edit($category): View
+	public function edit($id): View
 	{
 		return view('admin.posts.edit-movie', [
-			'movie' => Category::all()->find($category),
+			'movie' => Category::all()->find($id),
 		]);
 	}
 
-	public function update(MoviePostRequest $request, $category): RedirectResponse
+	public function update(MoviePostRequest $request, $id): RedirectResponse
 	{
 		$attributes = $request->validated();
-		Category::find($category)->update($attributes);
+		Category::find($id)->update($attributes);
 
 		return redirect(route('manage.movies'))->with('success', 'Successfully Updated');
 	}
 
-	public function destroy($category)
+	public function destroy($id)
 	{
-		// dd(Category::find($category));
-		Category::find($category)->delete();
+		Category::find($id)->delete();
 		return redirect(route('manage.movies'))->with('success', 'Successfully Deleted');
 	}
 }

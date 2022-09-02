@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/quote-create', [QuotesController::class, 'store'])->name('post.quote');
 	Route::get('/quote/{post}/edit', [QuotesController::class, 'edit'])->name('edit.quote');
 	Route::patch('/quote/{post}', [QuotesController::class, 'update'])->name('update.quote');
+	Route::delete('/quote/{post}', [QuotesController::class, 'destroy'])->name('delete.quote');
 
 	Route::post('logout', [SessionsController::class, 'destroy'])->name('admin.logout');
 });

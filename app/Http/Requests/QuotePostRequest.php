@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class QuotePostRequest extends FormRequest
 {
@@ -17,7 +18,7 @@ class QuotePostRequest extends FormRequest
 			'slug'                  => 'required',
 			'quote'                 => 'required',
 			'thumbnail'             => ['required', 'image'],
-			// 'category_id'           => 'required|exists:categories,id',
+			'category_id'           => ['required', Rule::exists('categories', 'id')],
 		];
 	}
 }
