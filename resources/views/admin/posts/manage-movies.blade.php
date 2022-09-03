@@ -1,5 +1,5 @@
 @php
-use App\Models\Category;
+use App\Models\Movie;
 @endphp
 <x-navigation>
     <div class="w-full max-w-4xl mx-auto my-20 bg-white shadow-lg rounded-xl border border-gray-200">
@@ -9,30 +9,30 @@ use App\Models\Category;
         <div class="overflow-x-auto p-3">
             <table class="table-auto w-full">
                 <tbody class="text-sm divide-y divide-gray-100">
-                    @foreach (Category::all() as $post)
+                    @foreach (Movie::all() as $movie)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
                                 <div class="font-medium text-gray-800 underline">
                                     <p class="text-lg">
-                                        {{ $post->title }}
+                                        {{ $movie->title }}
                                     </p>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="text-left text-green-500">
-                                    <a href="{{ route('movie.quotes', $post->id) }}"
+                                    <a href="{{ route('movie.quotes', $movie->id) }}"
                                         class="hover:text-green-600">View</a>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="text-left font-medium text-orange-400">
-                                    <a href="{{ route('edit.movie', $post->id) }}"
+                                    <a href="{{ route('edit.movie', $movie->id) }}"
                                         class="hover:text-orange-600">Edit</a>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="flex justify-center">
-                                    <form method="POST" action="{{ route('delete.movie', $post->id) }}">
+                                    <form method="POST" action="{{ route('delete.movie', $movie->id) }}">
                                         @csrf
                                         @method('DELETE')
 

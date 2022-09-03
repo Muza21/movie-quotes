@@ -1,5 +1,5 @@
 @php
-use App\Models\Category;
+use App\Models\Movie;
 @endphp
 <x-navigation>
     <section>
@@ -14,9 +14,9 @@ use App\Models\Category;
                 <div class="flex justify-between mb-5">
                     <label for="title_id">Movie Title</label>
                     <select name="title_id" id="title_id" class="py-2 pl-4 pr-28 mb-2" required>
-                        @foreach (Category::all() as $category)
-                            <option value="{{ $category->id }}">
-                                {{ ucwords($category->title) }}</option>
+                        @foreach (Movie::all() as $movie)
+                            <option value="{{ $movie->id }}">
+                                {{ ucwords($movie->title) }}</option>
                         @endforeach
                     </select>
                     {{-- <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="title"

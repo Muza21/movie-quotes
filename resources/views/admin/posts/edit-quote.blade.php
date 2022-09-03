@@ -1,5 +1,5 @@
 @php
-use App\Models\Category;
+use App\Models\Movie;
 @endphp
 <x-navigation>
     <section>
@@ -18,10 +18,10 @@ use App\Models\Category;
                 <div class="flex justify-between mb-5">
                     <label for="title_id">Movie Title</label>
                     <select name="title_id" id="title_id" class="py-2 pl-4 pr-28 mb-2" required>
-                        @foreach (Category::all() as $category)
-                            <option value="{{ old('category_id', $category->id) }}"
-                                {{ old('category_id', $quote->category_id) == $category->id ? 'selected' : '' }}>
-                                {{ ucwords($category->title) }}</option>
+                        @foreach (Movie::all() as $movie)
+                            <option value="{{ old('movie_id', $movie->id) }}"
+                                {{ old('category_id', $quote->movie_id) == $movie->id ? 'selected' : '' }}>
+                                {{ ucwords($movie->title) }}</option>
                         @endforeach
                     </select>
                     @error('title')

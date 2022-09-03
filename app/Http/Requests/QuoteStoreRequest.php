@@ -17,7 +17,7 @@ class QuoteStoreRequest extends FormRequest
 			'slug'                  => 'required',
 			'quote'                 => 'required',
 			'thumbnail'             => ['required', 'image'],
-			'title_id'              => 'required|exists:categories,id',
+			'title_id'              => 'required|exists:movies,id',
 		];
 	}
 }

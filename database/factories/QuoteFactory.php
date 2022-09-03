@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Category;
+use App\Models\Movie;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +18,7 @@ class PostFactory extends Factory
 	public function definition()
 	{
 		return [
-			'category_id'       => Category::factory(),
+			'movie_id'          => Movie::factory(),
 			'slug'              => $this->faker->slug,
 			'quote'             => $this->faker->sentence(),
 		];

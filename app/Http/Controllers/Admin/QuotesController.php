@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QuoteStoreRequest;
 use App\Http\Requests\QuoteUpdateRequest;
-use App\Models\Post;
+use App\Models\Quote;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -15,7 +15,7 @@ class QuotesController extends Controller
 	{
 		// ddd(Post::all());
 		return view('admin.posts.manage-quotes', [
-			'posts' => Post::all(),
+			'posts' => Quote::all(),
 		]);
 	}
 
@@ -23,10 +23,10 @@ class QuotesController extends Controller
 	{
 		$attributes = $request->validated();
 
-		Post::create([
+		Quote::create([
 			'quote'       => $attributes['quote'],
 			'slug'        => $attributes['slug'],
-			'category_id' => $attributes['title_id'],
+			'movie_id'    => $attributes['title_id'],
 			'thumbnail'   => request()->file('thumbnail')->store('thumbnails'),
 		]);
 
@@ -37,11 +37,11 @@ class QuotesController extends Controller
 	public function edit($id): View
 	{
 		return view('admin.posts.edit-quote', [
-			'quote' => Post::all()->find($id),
+			'quote' => Quote::all()->find($id),
 		]);
 	}
 
-	public function update(QuoteUpdateRequest $request, Post $post): RedirectResponse
+	public function update(QuoteUpdateRequest $request, Quote $post): RedirectResponse
 	{
 		$attributes = $request->validated();
 
@@ -53,11 +53,11 @@ class QuotesController extends Controller
 		{
 			$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		}
-
-		Post::create([
+		// dd($post);
+		$post->update([
 			'quote'       => $attributes['quote'],
 			'slug'        => $attributes['slug'],
-			'category_id' => $attributes['title_id'],
+			'movie_id'    => $attributes['title_id'],
 			'thumbnail'   => $attributes['thumbnail'],
 		]);
 
@@ -66,7 +66,7 @@ class QuotesController extends Controller
 
 	public function destroy($id): RedirectResponse
 	{
-		Post::find($id)->delete();
+		Quote::find($id)->delete();
 		return redirect(route('manage.quote'))->with('success', 'Successfully Deleted');
 	}
 }

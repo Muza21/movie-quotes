@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Post;
+use App\Models\Movie;
+use App\Models\Quote;
 use Illuminate\Contracts\View\View;
 
 class PostsController extends Controller
 {
 	public function index(): View
 	{
-		$post = Post::inRandomOrder()->first();
+		$post = Quote::inRandomOrder()->first();
 
 		return view('layout', [
 			'post' => $post,
 		]);
 	}
 
-	public function show($category)
+	public function show($id)
 	{
 		return view('quotes', [
-			'quotes'        => Category::all()->find($category)->posts,
-			'movie'         => Category::all()->find($category),
+			'quotes'        => Movie::all()->find($id)->quotes,
+			'movie'         => Movie::all()->find($id),
 		]);
 	}
 }
