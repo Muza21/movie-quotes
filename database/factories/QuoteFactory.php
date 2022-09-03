@@ -19,7 +19,6 @@ class PostFactory extends Factory
 	{
 		return [
 			'movie_id'          => Movie::factory(),
-			'slug'              => $this->faker->slug,
 			'quote'             => $this->faker->sentence(),
 		];
 	}

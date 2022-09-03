@@ -4,14 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Quote extends Model
 {
-	use HasFactory;
+	use HasFactory,HasTranslations;
 
 	protected $guarded = [];
 
-	//This is post that has one category(movie)
+	protected $translatable = ['quote'];
+
 	public function movie()
 	{
 		return $this->belongsTo(Movie::class);

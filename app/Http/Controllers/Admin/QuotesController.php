@@ -13,7 +13,6 @@ class QuotesController extends Controller
 {
 	public function index(): View
 	{
-		// ddd(Post::all());
 		return view('admin.posts.manage-quotes', [
 			'posts' => Quote::all(),
 		]);
@@ -24,14 +23,15 @@ class QuotesController extends Controller
 		$attributes = $request->validated();
 
 		Quote::create([
-			'quote'       => $attributes['quote'],
-			'slug'        => $attributes['slug'],
+			'quote'        => [
+				'en' => $attributes['quote_en'],
+				'ka' => $attributes['quote_ka'],
+			],
 			'movie_id'    => $attributes['title_id'],
 			'thumbnail'   => request()->file('thumbnail')->store('thumbnails'),
 		]);
 
 		return redirect('/');
-		// ->with('success', 'Successfuly added');
 	}
 
 	public function edit($id): View
@@ -53,10 +53,11 @@ class QuotesController extends Controller
 		{
 			$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		}
-		// dd($post);
 		$post->update([
-			'quote'       => $attributes['quote'],
-			'slug'        => $attributes['slug'],
+			'quote'        => [
+				'en' => $attributes['quote_en'],
+				'ka' => $attributes['quote_ka'],
+			],
 			'movie_id'    => $attributes['title_id'],
 			'thumbnail'   => $attributes['thumbnail'],
 		]);

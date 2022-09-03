@@ -20,9 +20,13 @@ class MoviesController extends Controller
 	public function store(MovieStoreRequest $request): RedirectResponse
 	{
 		$attributes = $request->validated();
+
+		// dd($post);
 		Movie::create([
-			'title'        => $attributes['title'],
-			'slug'         => $attributes['slug'],
+			'title'        => [
+				'en' => $attributes['title_en'],
+				'ka' => $attributes['title_ka'],
+			],
 		]);
 
 		return redirect('/');
@@ -38,7 +42,12 @@ class MoviesController extends Controller
 	public function update(MovieStoreRequest $request, $id): RedirectResponse
 	{
 		$attributes = $request->validated();
-		Movie::find($id)->update($attributes);
+		Movie::find($id)->update([
+			'title'        => [
+				'en' => $attributes['title_en'],
+				'ka' => $attributes['title_ka'],
+			],
+		]);
 
 		return redirect(route('manage.movies'))->with('success', 'Successfully Updated');
 	}

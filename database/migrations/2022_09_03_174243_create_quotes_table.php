@@ -16,7 +16,6 @@ return new class extends Migration {
 			$table->id();
 			$table->foreignId('movie_id')->constrained()->cascadeOnDelete();
 			$table->string('quote');
-			$table->string('slug')->unique();
 			$table->string('thumbnail')->nullable();
 			$table->timestamps();
 		});

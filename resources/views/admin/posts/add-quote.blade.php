@@ -19,30 +19,24 @@ use App\Models\Movie;
                                 {{ ucwords($movie->title) }}</option>
                         @endforeach
                     </select>
-                    {{-- <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="title"
-                        id="title" value="{{ old('email') }}" required>
-
-                    @error('title')
-                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror --}}
                 </div>
                 <div class="mb-6">
-                    <label for="quote">Quote</label>
+                    <label for="quote_en">Quote en</label>
 
-                    <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="quote"
-                        id="quote" required>
+                    <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="quote_en"
+                        id="quote_en" required>
 
-                    @error('quote')
+                    @error('quote_en')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="mb-6">
-                    <label for="slug">Slug</label>
+                    <label for="quote_ka">Quote ka</label>
 
-                    <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="slug"
-                        id="slug" required>
+                    <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="quote_ka"
+                        id="quote_ka" required>
 
-                    @error('slug')
+                    @error('quote_ka')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
                 </div>

@@ -10,22 +10,22 @@
                     <h2>Add Movies</h2>
                 </header>
                 <div class="mb-6">
-                    <label for="title">Movie Title</label>
+                    <label for="title_en">Movie Title en</label>
 
-                    <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="title"
-                        id="title" required>
+                    <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="title_en"
+                        id="title_en" required>
 
-                    @error('title')
+                    @error('title_en')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="mb-6">
-                    <label for="slug">Slug</label>
+                    <label for="title_ka">Movie Title ka</label>
 
-                    <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="slug"
-                        id="slug" required>
+                    <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="title_ka"
+                        id="title_ka" required>
 
-                    @error('slug')
+                    @error('title_ka')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                     @enderror
                 </div>

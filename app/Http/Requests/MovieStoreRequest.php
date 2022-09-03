@@ -16,8 +16,8 @@ class MovieStoreRequest extends FormRequest
 	{
 		// if slug is not updated it gives an error, so it needs ignore rule
 		return [
-			'title'                  => 'required',
-			'slug'                   => ['required', Rule::unique('movies', 'slug')],
+			'title_en' => 'required',
+			'title_ka' => 'required',
 		];
 	}
 }
