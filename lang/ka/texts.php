@@ -35,4 +35,7 @@ return [
 
 	'successfully_created' => 'წარმატებით შეიქმნა',
 	'successfully_updated' => 'წარმატებით განახლდა',
+
+	'email'    => 'მეილი',
+	'password' => 'პაროლი',
 ];

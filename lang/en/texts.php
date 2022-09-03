@@ -35,4 +35,7 @@ return [
 
 	'successfully_created' => 'Successfully Created',
 	'successfully_updated' => 'Successfully Updated',
+
+	'email'    => 'Email',
+	'password' => 'Password',
 ];
