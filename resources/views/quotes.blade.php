@@ -13,7 +13,7 @@
         @else
             <div class="max-w-2xl mx-auto m-28">
                 <h1 class="text-center text-white text-4xl font-bold">
-                    No quotes yet. Please check back later.
+                    {{ __('texts.no_quotes') }}
                 </h1>
             </div>
         @endif

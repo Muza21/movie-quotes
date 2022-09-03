@@ -14,29 +14,29 @@
         <nav class="flex justify-between items-center mt-6">
             <div class="text-white uppercase font-semibold text-lg  hover:text-green-500">
                 <a href="/">
-                    <h1 class="mx-10 hover:text-green-500">Welcome, {{ auth()->user()->username }}</h1>
+                    <h1 class="mx-10 hover:text-green-500">{{ __('texts.random_quote') }}</h1>
                 </a>
             </div>
 
             <div class=" md:mt-0 flex items-center">
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <a href="{{ route('manage.movies') }}">Manage Movies</a>
+                    <a href="{{ route('manage.movies') }}">{{ __('texts.manage_movies') }}</a>
                 </div>
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <a href="{{ route('manage.quote') }}">Manage Quotes</a>
+                    <a href="{{ route('manage.quote') }}">{{ __('texts.manage_quotes') }}</a>
                 </div>
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <a href="{{ route('add.movie') }}">Add Movie</a>
+                    <a href="{{ route('add.movie') }}">{{ __('texts.add_movies') }}</a>
                 </div>
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <a href="{{ route('create.quote') }}">Add Quote</a>
+                    <a href="{{ route('create.quote') }}">{{ __('texts.add_quotes') }}</a>
                 </div>
 
 
                 <form method="POST" action="/logout">
                     @csrf
                     <button href="#" type="submit"
-                        class="text-white uppercase font-semibold text-lg mr-10 rounded-xl hover:text-green-500">Log Out
+                        class="text-white uppercase font-semibold text-lg mr-10 rounded-xl hover:text-green-500">{{ __('texts.log_out') }}
                     </button>
                 </form>
             </div>
@@ -45,7 +45,7 @@
     @else
         <div class="flex justify-end mt-6">
             <a href="{{ route('admin.index') }}"
-                class="text-white mr-10 uppercase font-semibold text-lg rounded-xl hover:text-green-500">Log In</a>
+                class="text-white mr-10 uppercase font-semibold text-lg rounded-xl hover:text-green-500">{{ __('texts.log_in') }}</a>
         </div>
     @endauth
 

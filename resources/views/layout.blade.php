@@ -18,7 +18,7 @@
             </div>
         @else
             <div class="max-w-3xl p-10 bg-white mx-auto rounded-xl mt-32 text-center font-bold text-2xl">
-                <h2>There Are Currently No Movies and Quotes</h2>
+                <h2>{{ __('texts.no_quotes') }}</h2>
             </div>
         @endif
 

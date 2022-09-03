@@ -4,7 +4,7 @@ use App\Models\Movie;
 <x-navigation>
     <div class="w-full max-w-4xl mx-auto my-20 bg-white shadow-lg rounded-xl border border-gray-200">
         <header class="px-9 py-4 border-b border-gray-100">
-            <h2 class="font-bold text-lg text-center">Manage Quotes</h2>
+            <h2 class="font-bold text-lg text-center">{{ __('texts.manage_quotes') }}</h2>
             <select name="category" id="category" class="px-9 py-2">
                 @foreach (Movie::all() as $movie)
                     <option value="{{ $movie->id }}" {{ old('movie_id') == $movie->id ? 'selected' : '' }}>
@@ -26,13 +26,13 @@ use App\Models\Movie;
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="text-left text-green-500">
                                     <a href="{{ route('movie.quotes', $post->movie->id) }}"
-                                        class="hover:text-green-600">View</a>
+                                        class="hover:text-green-600">{{ __('texts.view') }}</a>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="text-left font-medium text-orange-400">
                                     <a href="{{ route('edit.quote', $post->id) }}"
-                                        class="hover:text-orange-600">Edit</a>
+                                        class="hover:text-orange-600">{{ __('texts.edit') }}</a>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -41,7 +41,8 @@ use App\Models\Movie;
                                         @csrf
                                         @method('DELETE')
 
-                                        <button class="text-sm text-red-400 hover:text-red-600">Delete</button>
+                                        <button
+                                            class="text-sm text-red-400 hover:text-red-600">{{ __('texts.delete') }}</button>
                                     </form>
                                 </div>
                             </td>

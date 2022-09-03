@@ -12,11 +12,11 @@ use App\Models\Movie;
                 @method('PATCH')
 
                 <header class="text-center font-bold text-xl pb-6 mb-6 border-b-2 border-gray-300">
-                    <h2>Update Quote</h2>
+                    <h2>{{ __('texts.update_quote') }}</h2>
                 </header>
 
                 <div class="flex justify-between mb-5">
-                    <label for="title_id">Movie Title</label>
+                    <label for="title_id">{{ __('texts.movie_title') }}</label>
                     <select name="title_id" id="title_id" class="py-2 pl-4 pr-28 mb-2" required>
                         @foreach (Movie::all() as $movie)
                             <option value="{{ old('movie_id', $movie->id) }}"
@@ -29,7 +29,7 @@ use App\Models\Movie;
                     @enderror
                 </div>
                 <div class="mb-6">
-                    <label for="quote_en">Quote en</label>
+                    <label for="quote_en">{{ __('texts.quote_en') }}</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="quote_en"
                         id="quote_en" value="{{ old('quote', $quote->quote) }}" required>
@@ -39,7 +39,7 @@ use App\Models\Movie;
                     @enderror
                 </div>
                 <div class="mb-6">
-                    <label for="quote_ka">Quote ka</label>
+                    <label for="quote_ka">{{ __('texts.quote_ka') }}</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="quote_ka"
                         id="quote_ka" value="{{ old('slug', $quote->slug) }}" required>
@@ -50,7 +50,7 @@ use App\Models\Movie;
                 </div>
 
                 <div class="mb-6">
-                    <label for="thumbnail">Thumbnail</label>
+                    <label for="thumbnail">{{ __('texts.thumbnail') }}</label>
 
                     <div class="flex">
                         <input class="border border-gray-400 p-2 w-full rounded-xl" type="file" name="thumbnail"
@@ -64,7 +64,7 @@ use App\Models\Movie;
 
                 <button type="submit"
                     class="bg-green-500 text-white uppercase font-semibold text-xs py-2 px-6 rounded-xl hover:bg-green-600">
-                    Update
+                    {{ __('texts.update') }}
                 </button>
 
             </form>

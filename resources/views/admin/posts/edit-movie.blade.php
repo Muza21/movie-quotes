@@ -9,11 +9,11 @@
                 @method('PATCH')
 
                 <header class="text-center font-bold text-xl pb-6 mb-6 border-b-2 border-gray-300">
-                    <h2>Update Movies</h2>
+                    <h2>{{ __('texts.update_movie') }}</h2>
                 </header>
 
                 <div class="mb-6">
-                    <label for="title_en">Movie Title en</label>
+                    <label for="title_en">{{ __('texts.movie_title_en') }}</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="title_en"
                         id="title_en" value="{{ old('title_en', $movie->title) }}" required>
@@ -23,7 +23,7 @@
                     @enderror
                 </div>
                 <div class="mb-6">
-                    <label for="title_ka">Movie Title ka</label>
+                    <label for="title_ka">{{ __('texts.movie_title_ka') }}</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="title_ka"
                         id="title_ka" value="{{ old('title_ka', $movie->title) }}" required>
@@ -35,7 +35,7 @@
 
                 <button type="submit"
                     class="bg-green-500 text-white uppercase font-semibold text-xs py-2 px-6 rounded-xl hover:bg-green-600">
-                    Update
+                    {{ __('texts.update') }}
                 </button>
 
             </form>

@@ -9,10 +9,10 @@ use App\Models\Movie;
             <form method="POST" action="{{ route('post.quote') }}" enctype="multipart/form-data" class="mt-10">
                 @csrf
                 <header class="text-center font-bold text-xl pb-6 mb-6 border-b-2 border-gray-300">
-                    <h2>Add Quote</h2>
+                    <h2>{{ __('texts.add_quotes') }}</h2>
                 </header>
                 <div class="flex justify-between mb-5">
-                    <label for="title_id">Movie Title</label>
+                    <label for="title_id">{{ __('texts.movie_title') }}</label>
                     <select name="title_id" id="title_id" class="py-2 pl-4 pr-28 mb-2" required>
                         @foreach (Movie::all() as $movie)
                             <option value="{{ $movie->id }}">
@@ -21,7 +21,7 @@ use App\Models\Movie;
                     </select>
                 </div>
                 <div class="mb-6">
-                    <label for="quote_en">Quote en</label>
+                    <label for="quote_en">{{ __('texts.quote_en') }}</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="quote_en"
                         id="quote_en" required>
@@ -31,7 +31,7 @@ use App\Models\Movie;
                     @enderror
                 </div>
                 <div class="mb-6">
-                    <label for="quote_ka">Quote ka</label>
+                    <label for="quote_ka">{{ __('texts.quote_ka') }}</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="quote_ka"
                         id="quote_ka" required>
@@ -42,7 +42,7 @@ use App\Models\Movie;
                 </div>
 
                 <div class="mb-6">
-                    <label for="thumbnail">Thumbnail</label>
+                    <label for="thumbnail">{{ __('texts.thumbnail') }}</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="file" name="thumbnail"
                         id="thumbnail" required>
@@ -54,7 +54,7 @@ use App\Models\Movie;
 
                 <button type="submit"
                     class="bg-green-500 text-white uppercase font-semibold text-xs py-2 px-6 rounded-xl hover:bg-green-600">
-                    Create
+                    {{ __('texts.create') }}
                 </button>
             </form>
         </main>
