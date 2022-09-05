@@ -39,6 +39,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::delete('/movies/{post}', [MoviesController::class, 'destroy'])->name('delete.movie');
 
 	Route::get('/quote/manage', [QuotesController::class, 'index'])->name('manage.quote');
+	Route::get('/quote/manage/{movie}', [QuotesController::class, 'movie'])->name('movie.quotes');
 	Route::view('/quote', 'admin.posts.add-quote')->name('create.quote');
 	Route::post('/quote-create', [QuotesController::class, 'store'])->name('post.quote');
 	Route::get('/quote/{post}/edit', [QuotesController::class, 'edit'])->name('edit.quote');

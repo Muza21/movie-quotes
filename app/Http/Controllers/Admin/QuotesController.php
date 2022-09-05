@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\QuoteStoreRequest;
 use App\Http\Requests\QuoteUpdateRequest;
+use App\Models\Movie;
 use App\Models\Quote;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -15,6 +16,15 @@ class QuotesController extends Controller
 	{
 		return view('admin.posts.manage-quotes', [
 			'posts' => Quote::all(),
+		]);
+	}
+
+	public function movie($id)
+	{
+		// ddd(Movie::all()->find($id)->quotes);
+		return view('admin.posts.manage-quotes', [
+			'posts'        => Movie::all()->find($id)->quotes,
+			'currentMovie' => Movie::all()->find($id),
 		]);
 	}
 
