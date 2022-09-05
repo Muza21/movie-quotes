@@ -16,14 +16,14 @@ use App\Models\Movie;
             <x-dropdown>
                 <x-slot name="trigger">
                     <button class="text-sm font-bold uppercase bg-gray-100 rounded-xl p-4 hover:text-green-500">
-                        {{ isset($currentMovie) ? $currentMovie->title : 'Select a Movie' }}
+                        {{ isset($currentMovie) ? $currentMovie->title : __('texts.select_a_movie') }}
                     </button>
                 </x-slot>
                 <x-dropdown-item href="{{ route('manage.quote') }}" :active="request()->routeIs('manage.quote')">
                     All
                 </x-dropdown-item>
                 @foreach (Movie::all() as $movie)
-                    <x-dropdown-item href="{{ route('movie.quotes', $movie->id) }}" :active="isset($currentMovie) && $currentMovie->id === $movie->id">
+                    <x-dropdown-item href="{{ route('see.quotes', $movie->id) }}" :active="isset($currentMovie) && $currentMovie->id === $movie->id">
                         {{ ucwords($movie->title) }}
                     </x-dropdown-item>
                 @endforeach
@@ -69,5 +69,4 @@ use App\Models\Movie;
             </table>
         </div>
     </div>
-    <x-flash />
 </x-navigation>

@@ -23,7 +23,7 @@ Route::get('/', [PostsController::class, 'index'])->name('random.quote');
 
 Route::get('/change-locale/{locale}', [LanguageController::class, 'change'])->name('locale.change');
 
-Route::get('/quotes/{category}', [PostsController::class, 'show'])->name('movie.quotes');
+Route::get('/movie/{quotes}', [PostsController::class, 'show'])->name('movie.quotes');
 
 Route::middleware(['guest'])->group(function () {
 	Route::view('login', 'login')->name('admin.index');
@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::delete('/movies/{post}', [MoviesController::class, 'destroy'])->name('delete.movie');
 
 	Route::get('/quote/manage', [QuotesController::class, 'index'])->name('manage.quote');
-	Route::get('/quote/manage/{movie}', [QuotesController::class, 'movie'])->name('movie.quotes');
+	Route::get('/quote/manage/{movie}', [QuotesController::class, 'movie'])->name('see.quotes');
 	Route::view('/quote', 'admin.posts.add-quote')->name('create.quote');
 	Route::post('/quote-create', [QuotesController::class, 'store'])->name('post.quote');
 	Route::get('/quote/{post}/edit', [QuotesController::class, 'edit'])->name('edit.quote');

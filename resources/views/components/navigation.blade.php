@@ -86,5 +86,6 @@
         </div>
     </div>
 </body>
+<x-flash />
 
 </html>

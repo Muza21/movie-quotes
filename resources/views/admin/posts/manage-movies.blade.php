@@ -47,5 +47,4 @@ use App\Models\Movie;
             </table>
         </div>
     </div>
-    <x-flash />
 </x-navigation>

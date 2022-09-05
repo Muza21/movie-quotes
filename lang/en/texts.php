@@ -38,4 +38,6 @@ return [
 
 	'email'    => 'Email',
 	'password' => 'Password',
+
+	'select_a_movie' => 'Select a Movie',
 ];

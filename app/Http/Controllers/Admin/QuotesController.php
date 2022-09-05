@@ -41,7 +41,7 @@ class QuotesController extends Controller
 			'thumbnail'   => request()->file('thumbnail')->store('thumbnails'),
 		]);
 
-		return redirect('/');
+		return redirect('/')->with('success', 'Successfully Created');
 	}
 
 	public function edit($id): View
@@ -72,7 +72,7 @@ class QuotesController extends Controller
 			'thumbnail'   => $attributes['thumbnail'],
 		]);
 
-		return redirect('/');
+		return redirect('/')->with('success', 'Successfully Updated');
 	}
 
 	public function destroy($id): RedirectResponse

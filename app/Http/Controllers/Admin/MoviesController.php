@@ -29,7 +29,7 @@ class MoviesController extends Controller
 			],
 		]);
 
-		return redirect('/');
+		return redirect('/')->with('success', 'Successfully Created');
 	}
 
 	public function edit($id): View

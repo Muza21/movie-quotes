@@ -38,4 +38,6 @@ return [
 
 	'email'    => 'მეილი',
 	'password' => 'პაროლი',
+
+	'select_a_movie' => 'აირჩიე ფილმი',
 ];
