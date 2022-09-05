@@ -12,24 +12,34 @@
 <body class="bg-neutral-700">
     @auth
         <nav class="flex justify-between items-center mt-6">
-            <div class="text-white uppercase font-semibold text-lg  hover:text-green-500">
-                <a href="/">
-                    <h1 class="mx-10 hover:text-green-500">{{ __('texts.random_quote') }}</h1>
-                </a>
+            <div class="text-white uppercase font-semibold text-lg">
+
+                <h2 class="mx-10 hover:text-green-500">
+                    <a href="{{ route('random.quote') }}">{{ __('texts.random_quote') }}</a>
+                </h2>
+
             </div>
 
             <div class=" md:mt-0 flex items-center">
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <a href="{{ route('manage.movies') }}">{{ __('texts.manage_movies') }}</a>
+                    <x-active href="{{ route('manage.movies') }}" :active="request()->routeIs('manage.movies')">
+                        {{ __('texts.manage_movies') }}
+                    </x-active>
                 </div>
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <a href="{{ route('manage.quote') }}">{{ __('texts.manage_quotes') }}</a>
+                    <x-active href="{{ route('manage.quote') }}" :active="request()->routeIs('manage.quote')">
+                        {{ __('texts.manage_quotes') }}
+                    </x-active>
                 </div>
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <a href="{{ route('add.movie') }}">{{ __('texts.add_movies') }}</a>
+                    <x-active href="{{ route('add.movie') }}" :active="request()->routeIs('add.movie')">
+                        {{ __('texts.add_movies') }}
+                    </x-active>
                 </div>
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <a href="{{ route('create.quote') }}">{{ __('texts.add_quotes') }}</a>
+                    <x-active href="{{ route('create.quote') }}" :active="request()->routeIs('create.quote')">
+                        {{ __('texts.add_quotes') }}
+                    </x-active>
                 </div>
 
 
@@ -53,19 +63,25 @@
 
 
     <div class="fixed top-[45%] ml-5">
-        <div class="border-solid border-2 border-white bg-white rounded-full">
-            <a href="{{ route('locale.change', 'en') }}">
-                <x-active-item :active="request()->is(route('locale.change', 'en'))">
-                    en
-                </x-active-item>
-            </a>
+        <div>
+            {{-- <a href="{{ route('locale.change', 'en') }}"
+                class='p-3 border-2 border-white bg-white text-center rounded-full'>
+                en
+            </a> --}}
+            <x-active-item href="{{ route('locale.change', 'en') }}" :active="request()->routeIs('locale.change', 'en')">
+                en
+            </x-active-item>
+
         </div>
-        <div class="border-solid border-2 border-white bg-white rounded-full mt-2">
-            <a href="{{ route('locale.change', 'ka') }}">
-                <x-active-item :active="request()->is(route('locale.change', 'ka'))">
-                    ka
-                </x-active-item>
-            </a>
+        <div class="mt-8">
+            {{-- <a href="{{ route('locale.change', 'ka') }}"
+                class='p-3 border-2 border-white bg-white text-center rounded-full'>
+                ka
+            </a> --}}
+            <x-active-item href="{{ route('locale.change', 'ka') }}" :active="request()->routeIs('locale.change', 'ka')">
+                ka
+            </x-active-item>
+
         </div>
     </div>
 </body>
