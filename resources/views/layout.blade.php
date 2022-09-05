@@ -1,6 +1,5 @@
 <x-navigation>
     <section>
-        {{-- {{ dd($post->category->id) }} --}}
         @if (($post->movie_id ?? false) && ($post->quote ?? false))
             <div class="max-w-xl  mx-auto rounded-xl mt-24 overflow-hidden">
                 <img src="{{ asset('storage/' . $post->thumbnail) }}" class="max-w-full max-h-full" alt="">
@@ -12,8 +11,6 @@
             <div class="max-w-2xl mx-auto rounded-xl mt-10">
                 <h1 class="text-center text-white underline text-4xl">
                     <a href="{{ route('movie.quotes', $post->movie->id) }}">{{ $post->movie->title }}</a>
-                    {{-- <a href="/posts/{{ $post->category->id }}">{{ $post->category->title }}</a> --}}
-                    {{-- <a href="/posts">{{ __('texts.movie_title') }}</a> --}}
                 </h1>
             </div>
         @else

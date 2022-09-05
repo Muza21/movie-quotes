@@ -64,26 +64,16 @@
 
 
     <div class="fixed top-[45%] ml-5">
-
         <div>
-            {{-- <a href="{{ route('locale.change', 'en') }}"
-                class='p-3 border-2 border-white bg-white text-center rounded-full'>
-                en
-            </a> --}}
             <x-active-item href="{{ route('locale.change', 'en') }}" :active="'en' === App::currentLocale()">
                 en
             </x-active-item>
-
         </div>
+
         <div class="mt-8">
-            {{-- <a href="{{ route('locale.change', 'ka') }}"
-                class='p-3 border-2 border-white bg-white text-center rounded-full'>
-                ka
-            </a> --}}
             <x-active-item href="{{ route('locale.change', 'ka') }}" :active="'ka' === App::currentLocale()">
                 ka
             </x-active-item>
-
         </div>
     </div>
 </body>
