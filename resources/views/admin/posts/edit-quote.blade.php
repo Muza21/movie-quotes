@@ -32,7 +32,7 @@ use App\Models\Movie;
                     <label for="quote_en">{{ __('texts.quote_en') }}</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="quote_en"
-                        id="quote_en" value="{{ old('quote', $quote->quote) }}" required>
+                        id="quote_en" required>
 
                     @error('quote_en')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -42,7 +42,7 @@ use App\Models\Movie;
                     <label for="quote_ka">{{ __('texts.quote_ka') }}</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="quote_ka"
-                        id="quote_ka" value="{{ old('slug', $quote->slug) }}" required>
+                        id="quote_ka" required>
 
                     @error('quote_ka')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>

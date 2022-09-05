@@ -53,7 +53,7 @@ class QuotesController extends Controller
 	public function update(QuoteUpdateRequest $request, Quote $quote): RedirectResponse
 	{
 		$validation = $request->validated();
-		ddd(Quote::findorfail($quote->id));
+
 		if (!isset($validation['thumbnail']))
 		{
 			$validation['thumbnail'] = $quote->thumbnail;

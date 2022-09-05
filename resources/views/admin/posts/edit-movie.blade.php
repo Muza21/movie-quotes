@@ -16,7 +16,7 @@
                     <label for="title_en">{{ __('texts.movie_title_en') }}</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="title_en"
-                        id="title_en" value="{{ old('title_en', $movie->title) }}" required>
+                        id="title_en" required>
 
                     @error('title_en')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -26,7 +26,7 @@
                     <label for="title_ka">{{ __('texts.movie_title_ka') }}</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="title_ka"
-                        id="title_ka" value="{{ old('title_ka', $movie->title) }}" required>
+                        id="title_ka" required>
 
                     @error('title_ka')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
