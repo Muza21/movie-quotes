@@ -13,7 +13,7 @@ class MoviesController extends Controller
 	public function index(): View
 	{
 		return view('admin.posts.manage-movies', [
-			'posts' => Movie::paginate(50),
+			'movies' => Movie::paginate(30),
 		]);
 	}
 
@@ -21,7 +21,6 @@ class MoviesController extends Controller
 	{
 		$attributes = $request->validated();
 
-		// dd($post);
 		Movie::create([
 			'title'        => [
 				'en' => $attributes['title_en'],
@@ -29,32 +28,32 @@ class MoviesController extends Controller
 			],
 		]);
 
-		return redirect('/')->with('success', 'Successfully Created');
+		return redirect(route('random.quote'))->with('success', 'Successfully Created');
 	}
 
-	public function edit($id): View
+	public function edit(Movie $movie): View
 	{
 		return view('admin.posts.edit-movie', [
-			'movie' => Movie::all()->find($id),
+			'movie' => $movie,
 		]);
 	}
 
-	public function update(MovieStoreRequest $request, $id): RedirectResponse
+	public function update(MovieStoreRequest $request, Movie $movie): RedirectResponse
 	{
-		$attributes = $request->validated();
-		Movie::find($id)->update([
+		$validation = $request->validated();
+		$movie->update([
 			'title'        => [
-				'en' => $attributes['title_en'],
-				'ka' => $attributes['title_ka'],
+				'en' => $validation['title_en'],
+				'ka' => $validation['title_ka'],
 			],
 		]);
 
 		return redirect(route('manage.movies'))->with('success', 'Successfully Updated');
 	}
 
-	public function destroy($id): RedirectResponse
+	public function destroy(Movie $movie): RedirectResponse
 	{
-		Movie::find($id)->delete();
+		$movie->delete();
 		return redirect(route('manage.movies'))->with('success', 'Successfully Deleted');
 	}
 }

@@ -16,7 +16,7 @@ class QuoteStoreRequest extends FormRequest
 		return [
 			'quote_en'                 => 'required',
 			'quote_ka'                 => 'required',
-			'thumbnail'                => ['required', 'image'],
+			'thumbnail'                => 'required|image',
 			'title_id'                 => 'required|exists:movies,id',
 		];
 	}

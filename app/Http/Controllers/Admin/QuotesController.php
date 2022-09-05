@@ -15,16 +15,15 @@ class QuotesController extends Controller
 	public function index(): View
 	{
 		return view('admin.posts.manage-quotes', [
-			'posts' => Quote::all(),
+			'quotes' => Quote::paginate(30),
 		]);
 	}
 
-	public function movie($id)
+	public function movie(Movie $movie)
 	{
-		// ddd(Movie::all()->find($id)->quotes);
 		return view('admin.posts.manage-quotes', [
-			'posts'        => Movie::all()->find($id)->quotes,
-			'currentMovie' => Movie::all()->find($id),
+			'quotes'        => $movie->quotes,
+			'currentMovie'  => $movie,
 		]);
 	}
 
@@ -44,40 +43,40 @@ class QuotesController extends Controller
 		return redirect('/')->with('success', 'Successfully Created');
 	}
 
-	public function edit($id): View
+	public function edit(Quote $quote): View
 	{
 		return view('admin.posts.edit-quote', [
-			'quote' => Quote::all()->find($id),
+			'quote' => $quote,
 		]);
 	}
 
-	public function update(QuoteUpdateRequest $request, Quote $post): RedirectResponse
+	public function update(QuoteUpdateRequest $request, Quote $quote): RedirectResponse
 	{
-		$attributes = $request->validated();
-
-		if (!isset($attributes['thumbnail']))
+		$validation = $request->validated();
+		ddd(Quote::findorfail($quote->id));
+		if (!isset($validation['thumbnail']))
 		{
-			$attributes['thumbnail'] = $post->thumbnail;
+			$validation['thumbnail'] = $quote->thumbnail;
 		}
 		else
 		{
-			$attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+			$validation['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		}
-		$post->update([
+		$quote->update([
 			'quote'        => [
-				'en' => $attributes['quote_en'],
-				'ka' => $attributes['quote_ka'],
+				'en' => $validation['quote_en'],
+				'ka' => $validation['quote_ka'],
 			],
-			'movie_id'    => $attributes['title_id'],
-			'thumbnail'   => $attributes['thumbnail'],
+			'movie_id'    => $validation['title_id'],
+			'thumbnail'   => $validation['thumbnail'],
 		]);
 
-		return redirect('/')->with('success', 'Successfully Updated');
+		return redirect(route('manage.quote'))->with('success', 'Successfully Updated');
 	}
 
-	public function destroy($id): RedirectResponse
+	public function destroy(Quote $quote): RedirectResponse
 	{
-		Quote::find($id)->delete();
+		$quote->delete();
 		return redirect(route('manage.quote'))->with('success', 'Successfully Deleted');
 	}
 }

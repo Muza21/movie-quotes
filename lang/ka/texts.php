@@ -1,7 +1,6 @@
 <?php
 
 return [
-	// This are for navigation bar
 	'random_quote' => 'რანდომ ციტატა',
 
 	'manage_movies'   => 'ფილმის პანელი',
@@ -13,7 +12,6 @@ return [
 	'log_out'   => 'გასვლა',
 	'log_in'    => 'შესვლა',
 
-	// this are for manage
 	'view'   => 'ნახვა',
 	'edit'   => 'რედაქტირება',
 	'delete' => 'წაშლა',
@@ -23,7 +21,6 @@ return [
 	'update'      => 'განახლება',
 	'create'      => 'შექმნა',
 
-	// These are for user form labels
 	'movie_title_en'  => 'ფილმი en',
 	'movie_title_ka'  => 'ფილმი ka',
 	'movie_title'     => 'ფილმი',

@@ -1,7 +1,6 @@
 <?php
 
 return [
-	// This are for navigation bar
 	'random_quote' => 'Random Quote',
 
 	'manage_movies'   => 'Manage Movies',
@@ -13,7 +12,6 @@ return [
 	'log_out'   => 'Log Out',
 	'log_in'    => 'Log In',
 
-	// this are for manage
 	'view'   => 'View',
 	'edit'   => 'Edit',
 	'delete' => 'Delete',
@@ -23,7 +21,6 @@ return [
 	'update'      => 'Update',
 	'create'      => 'Create',
 
-	// These are for user form labels
 	'movie_title_en'  => 'Movie Title en',
 	'movie_title_ka'  => 'Movie Title ka',
 	'movie_title'     => 'Movie Title',

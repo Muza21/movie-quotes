@@ -6,7 +6,7 @@
             </h1>
         </div>
         @if ($quotes->count())
-            <x-posts-grid :posts="$quotes" />
+            <x-posts-grid :quotes="$quotes" />
         @else
             <div class="max-w-2xl mx-auto m-28">
                 <h1 class="text-center text-white text-4xl font-bold">

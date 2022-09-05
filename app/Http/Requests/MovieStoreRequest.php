@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class MovieStoreRequest extends FormRequest
 {
@@ -14,7 +13,6 @@ class MovieStoreRequest extends FormRequest
 	 */
 	public function rules()
 	{
-		// if slug is not updated it gives an error, so it needs ignore rule
 		return [
 			'title_en' => 'required',
 			'title_ka' => 'required',

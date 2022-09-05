@@ -1,6 +1,3 @@
-@php
-use App\Models\Movie;
-@endphp
 <x-navigation>
     <div class="w-full max-w-4xl mx-auto my-20 bg-white shadow-lg rounded-xl border border-gray-200">
         <header class="px-9 py-4 border-b border-gray-100 text-center font-bold text-lg">
@@ -9,7 +6,7 @@ use App\Models\Movie;
         <div class="overflow-x-auto p-3">
             <table class="table-auto w-full">
                 <tbody class="text-sm divide-y divide-gray-100">
-                    @foreach (Movie::all() as $movie)
+                    @foreach ($movies as $movie)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium">
                                 <div class="font-medium text-gray-800 underline">

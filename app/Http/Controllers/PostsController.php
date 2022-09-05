@@ -10,18 +10,16 @@ class PostsController extends Controller
 {
 	public function index(): View
 	{
-		$post = Quote::inRandomOrder()->first();
-
 		return view('layout', [
-			'post' => $post,
+			'quote' => Quote::inRandomOrder()->first(),
 		]);
 	}
 
-	public function show($id)
+	public function show(Movie $movie): View
 	{
 		return view('quotes', [
-			'quotes'        => Movie::all()->find($id)->quotes,
-			'movie'         => Movie::all()->find($id),
+			'quotes'        => $movie->quotes,
+			'movie'         => $movie,
 		]);
 	}
 }
