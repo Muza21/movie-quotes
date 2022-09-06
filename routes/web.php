@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::resource('movies', MoviesController::class);
 
 	Route::get('/quote/manage/{movie}', [QuotesController::class, 'movie'])->name('see.quotes');
-	Route::resource('quote', QuotesController::class);
+	Route::resource('quotes', QuotesController::class);
 
 	Route::post('logout', [SessionsController::class, 'logout'])->name('admin.logout');
 });

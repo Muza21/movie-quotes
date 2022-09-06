@@ -11,7 +11,7 @@ use App\Models\Movie;
                         {{ isset($currentMovie) ? $currentMovie->title : __('texts.select_a_movie') }}
                     </button>
                 </x-slot>
-                <x-dropdown-item href="{{ route('quote.index') }}" :active="request()->routeIs('quote.index')">
+                <x-dropdown-item href="{{ route('quotes.index') }}" :active="request()->routeIs('quotes.index')">
                     All
                 </x-dropdown-item>
                 @foreach (Movie::all() as $movie)
@@ -40,13 +40,13 @@ use App\Models\Movie;
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="text-left font-medium text-orange-400">
-                                    <a href="{{ route('quote.edit', $quote->id) }}"
+                                    <a href="{{ route('quotes.edit', $quote->id) }}"
                                         class="hover:text-orange-600">{{ __('texts.edit') }}</a>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="flex justify-center">
-                                    <form method="POST" action="{{ route('quote.destroy', $quote->id) }}">
+                                    <form method="POST" action="{{ route('quotes.destroy', $quote->id) }}">
                                         @csrf
                                         @method('DELETE')
 

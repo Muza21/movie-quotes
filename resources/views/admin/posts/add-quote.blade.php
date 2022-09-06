@@ -6,7 +6,7 @@ use App\Models\Movie;
         <main class="max-w-lg mx-auto mt-14 bg-slate-100 p-6 rounded-xl">
 
 
-            <form method="POST" action="{{ route('quote.store') }}" enctype="multipart/form-data" class="mt-10">
+            <form method="POST" action="{{ route('quotes.store') }}" enctype="multipart/form-data" class="mt-10">
                 @csrf
                 <header class="text-center font-bold text-xl pb-6 mb-6 border-b-2 border-gray-300">
                     <h2>{{ __('texts.add_quotes') }}</h2>

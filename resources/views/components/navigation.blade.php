@@ -28,7 +28,7 @@
                     </x-active>
                 </div>
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <x-active href="{{ route('quote.index') }}" :active="request()->routeIs('quote.index')">
+                    <x-active href="{{ route('quotes.index') }}" :active="request()->routeIs('quotes.index')">
                         {{ __('texts.manage_quotes') }}
                     </x-active>
                 </div>
@@ -38,7 +38,7 @@
                     </x-active>
                 </div>
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <x-active href="{{ route('quote.create') }}" :active="request()->routeIs('quote.create')">
+                    <x-active href="{{ route('quotes.create') }}" :active="request()->routeIs('quotes.create')">
                         {{ __('texts.add_quotes') }}
                     </x-active>
                 </div>

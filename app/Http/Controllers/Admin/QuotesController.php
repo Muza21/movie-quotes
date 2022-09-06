@@ -9,6 +9,7 @@ use App\Models\Movie;
 use App\Models\Quote;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\File;
 
 class QuotesController extends Controller
 {
@@ -65,6 +66,7 @@ class QuotesController extends Controller
 		}
 		else
 		{
+			File::delete('storage/' . $quote->thumbnail);
 			$validation['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 		}
 		$quote->update([
