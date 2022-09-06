@@ -6,10 +6,10 @@ use Illuminate\Http\RedirectResponse;
 
 class SessionsController extends Controller
 {
-	public function destroy(): RedirectResponse
+	public function logout(): RedirectResponse
 	{
 		auth()->logout();
 
-		return redirect('/')->with('success', 'Goodbye!');
+		return redirect(route('random.quote'));
 	}
 }

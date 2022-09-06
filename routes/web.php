@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\AdminPostsController;
+use App\Http\Controllers\Admin\MoviesController;
+use App\Http\Controllers\Admin\QuotesController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostsController;
@@ -18,23 +19,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-	return view('layout');
-});
+Route::get('/', [PostsController::class, 'index'])->name('random.quote');
 
 Route::get('/change-locale/{locale}', [LanguageController::class, 'change'])->name('locale.change');
 
+Route::get('/movie/{movie}', [PostsController::class, 'show'])->name('movie.quotes');
+
 Route::middleware(['guest'])->group(function () {
-	Route::get('/admin/login', [LoginController::class, 'index'])->name('admin.index');
-	Route::post('/admin/login', [LoginController::class, 'login'])->name('admin.login');
+	Route::view('login', 'login')->name('admin.index');
+	Route::post('login', [LoginController::class, 'login'])->name('admin.login');
 });
 
-Route::get('/posts', [PostsController::class, 'index'])->name('quotes.posts');
-
-Route::post('logout', [SessionsController::class, 'destroy'])->name('admin.logout')->middleware('auth');
-
 Route::middleware(['auth'])->group(function () {
-	Route::get('/admin/posts/manage', [AdminPostsController::class, 'index'])->name('admin.manage');
-	Route::view('/admin/posts', 'create')->name('admin.create');
-	Route::post('/admin/posts/create', [AdminPostsController::class, 'store'])->name('admin.post');
+	Route::view('/movie', 'admin.posts.add-movie')->name('create.movie');
+	Route::resource('movies', MoviesController::class);
+
+	Route::view('/quote', 'admin.posts.add-quote')->name('create.quote');
+	Route::get('/quote/manage/{movie}', [QuotesController::class, 'filter'])->name('filter.quotes');
+	Route::resource('quotes', QuotesController::class);
+
+	Route::post('logout', [SessionsController::class, 'logout'])->name('admin.logout');
 });
