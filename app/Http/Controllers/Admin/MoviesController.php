@@ -17,19 +17,14 @@ class MoviesController extends Controller
 		]);
 	}
 
-	public function create(): View
-	{
-		return view('admin.posts.add-movie');
-	}
-
 	public function store(MovieStoreRequest $request): RedirectResponse
 	{
-		$attributes = $request->validated();
+		$validation = $request->validated();
 
 		Movie::create([
 			'title'        => [
-				'en' => $attributes['title_en'],
-				'ka' => $attributes['title_ka'],
+				'en' => $validation['title_en'],
+				'ka' => $validation['title_ka'],
 			],
 		]);
 

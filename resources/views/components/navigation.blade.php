@@ -33,12 +33,12 @@
                     </x-active>
                 </div>
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <x-active href="{{ route('movies.create') }}" :active="request()->routeIs('movies.create')">
+                    <x-active href="{{ route('create.movie') }}" :active="request()->routeIs('create.movie')">
                         {{ __('texts.add_movies') }}
                     </x-active>
                 </div>
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <x-active href="{{ route('quotes.create') }}" :active="request()->routeIs('quotes.create')">
+                    <x-active href="{{ route('create.quote') }}" :active="request()->routeIs('create.quote')">
                         {{ __('texts.add_quotes') }}
                     </x-active>
                 </div>

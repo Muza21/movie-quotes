@@ -31,9 +31,11 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+	Route::view('/movie', 'admin.posts.add-movie')->name('create.movie');
 	Route::resource('movies', MoviesController::class);
 
-	Route::get('/quote/manage/{movie}', [QuotesController::class, 'movie'])->name('see.quotes');
+	Route::view('/quote', 'admin.posts.add-quote')->name('create.quote');
+	Route::get('/quote/manage/{movie}', [QuotesController::class, 'filter'])->name('filter.quotes');
 	Route::resource('quotes', QuotesController::class);
 
 	Route::post('logout', [SessionsController::class, 'logout'])->name('admin.logout');

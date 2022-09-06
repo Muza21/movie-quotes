@@ -15,7 +15,7 @@ use App\Models\Movie;
                     All
                 </x-dropdown-item>
                 @foreach (Movie::all() as $movie)
-                    <x-dropdown-item href="{{ route('see.quotes', $movie->id) }}" :active="isset($currentMovie) && $currentMovie->id === $movie->id">
+                    <x-dropdown-item href="{{ route('filter.quotes', $movie->id) }}" :active="isset($currentMovie) && $currentMovie->id === $movie->id">
                         {{ ucwords($movie->title) }}
                     </x-dropdown-item>
                 @endforeach
