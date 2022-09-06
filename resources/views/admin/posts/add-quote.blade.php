@@ -6,14 +6,14 @@ use App\Models\Movie;
         <main class="max-w-lg mx-auto mt-14 bg-slate-100 p-6 rounded-xl">
 
 
-            <form method="POST" action="{{ route('post.quote') }}" enctype="multipart/form-data" class="mt-10">
+            <form method="POST" action="{{ route('quote.store') }}" enctype="multipart/form-data" class="mt-10">
                 @csrf
                 <header class="text-center font-bold text-xl pb-6 mb-6 border-b-2 border-gray-300">
                     <h2>{{ __('texts.add_quotes') }}</h2>
                 </header>
                 <div class="flex justify-between mb-5">
-                    <label for="title_id">{{ __('texts.movie_title') }}</label>
-                    <select name="title_id" id="title_id" class="py-2 pl-4 pr-28 mb-2" required>
+                    <label for="movie_id">{{ __('texts.movie_title') }}</label>
+                    <select name="movie_id" id="movie_id" class="py-2 pl-4 pr-28 mb-2" required>
                         @foreach (Movie::all() as $movie)
                             <option value="{{ $movie->id }}">
                                 {{ ucwords($movie->title) }}</option>

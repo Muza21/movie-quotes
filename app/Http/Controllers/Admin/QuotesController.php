@@ -27,6 +27,11 @@ class QuotesController extends Controller
 		]);
 	}
 
+	public function create(): View
+	{
+		return view('admin.posts.add-quote');
+	}
+
 	public function store(QuoteStoreRequest $request): RedirectResponse
 	{
 		$attributes = $request->validated();
@@ -36,11 +41,11 @@ class QuotesController extends Controller
 				'en' => $attributes['quote_en'],
 				'ka' => $attributes['quote_ka'],
 			],
-			'movie_id'    => $attributes['title_id'],
+			'movie_id'    => $attributes['movie_id'],
 			'thumbnail'   => request()->file('thumbnail')->store('thumbnails'),
 		]);
 
-		return redirect('/')->with('success', 'Successfully Created');
+		return redirect(route('quote.index'))->with('success', 'Successfully Created');
 	}
 
 	public function edit(Quote $quote): View
@@ -67,16 +72,16 @@ class QuotesController extends Controller
 				'en' => $validation['quote_en'],
 				'ka' => $validation['quote_ka'],
 			],
-			'movie_id'    => $validation['title_id'],
+			'movie_id'    => $validation['movie_id'],
 			'thumbnail'   => $validation['thumbnail'],
 		]);
 
-		return redirect(route('manage.quote'))->with('success', 'Successfully Updated');
+		return redirect(route('quote.index'))->with('success', 'Successfully Updated');
 	}
 
 	public function destroy(Quote $quote): RedirectResponse
 	{
 		$quote->delete();
-		return redirect(route('manage.quote'))->with('success', 'Successfully Deleted');
+		return redirect(route('quote.index'))->with('success', 'Successfully Deleted');
 	}
 }

@@ -17,6 +17,11 @@ class MoviesController extends Controller
 		]);
 	}
 
+	public function create(): View
+	{
+		return view('admin.posts.add-movie');
+	}
+
 	public function store(MovieStoreRequest $request): RedirectResponse
 	{
 		$attributes = $request->validated();
@@ -28,7 +33,7 @@ class MoviesController extends Controller
 			],
 		]);
 
-		return redirect(route('random.quote'))->with('success', 'Successfully Created');
+		return redirect(route('movies.index'))->with('success', 'Successfully Created');
 	}
 
 	public function edit(Movie $movie): View
@@ -48,12 +53,12 @@ class MoviesController extends Controller
 			],
 		]);
 
-		return redirect(route('manage.movies'))->with('success', 'Successfully Updated');
+		return redirect(route('movies.index'))->with('success', 'Successfully Updated');
 	}
 
 	public function destroy(Movie $movie): RedirectResponse
 	{
 		$movie->delete();
-		return redirect(route('manage.movies'))->with('success', 'Successfully Deleted');
+		return redirect(route('movies.index'))->with('success', 'Successfully Deleted');
 	}
 }

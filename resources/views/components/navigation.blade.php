@@ -23,22 +23,22 @@
 
             <div class=" md:mt-0 flex items-center">
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <x-active href="{{ route('manage.movies') }}" :active="request()->routeIs('manage.movies')">
+                    <x-active href="{{ route('movies.index') }}" :active="request()->routeIs('movies.index')">
                         {{ __('texts.manage_movies') }}
                     </x-active>
                 </div>
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <x-active href="{{ route('manage.quote') }}" :active="request()->routeIs('manage.quote')">
+                    <x-active href="{{ route('quote.index') }}" :active="request()->routeIs('quote.index')">
                         {{ __('texts.manage_quotes') }}
                     </x-active>
                 </div>
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <x-active href="{{ route('add.movie') }}" :active="request()->routeIs('add.movie')">
+                    <x-active href="{{ route('movies.create') }}" :active="request()->routeIs('movies.create')">
                         {{ __('texts.add_movies') }}
                     </x-active>
                 </div>
                 <div class="text-lg text-white font-bold uppercase mr-10  hover:text-green-500">
-                    <x-active href="{{ route('create.quote') }}" :active="request()->routeIs('create.quote')">
+                    <x-active href="{{ route('quote.create') }}" :active="request()->routeIs('quote.create')">
                         {{ __('texts.add_quotes') }}
                     </x-active>
                 </div>

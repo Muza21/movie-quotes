@@ -6,7 +6,7 @@ use App\Models\Movie;
         <main class="max-w-lg mx-auto mt-14 bg-slate-100 p-6 rounded-xl">
 
 
-            <form method="POST" action="{{ route('update.quote', $quote->id) }}" enctype="multipart/form-data"
+            <form method="POST" action="{{ route('quote.update', $quote->id) }}" enctype="multipart/form-data"
                 class="mt-10">
                 @csrf
                 @method('PATCH')
@@ -32,7 +32,7 @@ use App\Models\Movie;
                     <label for="quote_en">{{ __('texts.quote_en') }}</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="quote_en"
-                        id="quote_en" required>
+                        id="quote_en" value="{{ old('quote_en', $quote->getTranslation('quote', 'en')) }}" required>
 
                     @error('quote_en')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
@@ -42,7 +42,7 @@ use App\Models\Movie;
                     <label for="quote_ka">{{ __('texts.quote_ka') }}</label>
 
                     <input class="border border-gray-400 p-2 w-full rounded-xl" type="text" name="quote_ka"
-                        id="quote_ka" required>
+                        id="quote_ka" value="{{ old('quote_ka', $quote->getTranslation('quote', 'ka')) }}" required>
 
                     @error('quote_ka')
                         <p class="text-red-500 text-xs mt-2">{{ $message }}</p>

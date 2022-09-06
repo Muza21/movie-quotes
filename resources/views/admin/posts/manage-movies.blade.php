@@ -23,13 +23,13 @@
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="text-left font-medium text-orange-400">
-                                    <a href="{{ route('edit.movie', $movie->id) }}"
+                                    <a href="{{ route('movies.edit', $movie->id) }}"
                                         class="hover:text-orange-600">{{ __('texts.edit') }}</a>
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <div class="flex justify-center">
-                                    <form method="POST" action="{{ route('delete.movie', $movie->id) }}">
+                                    <form method="POST" action="{{ route('movies.destroy', $movie->id) }}">
                                         @csrf
                                         @method('DELETE')
 

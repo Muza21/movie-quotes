@@ -6,7 +6,7 @@ use Illuminate\Http\RedirectResponse;
 
 class SessionsController extends Controller
 {
-	public function destroy(): RedirectResponse
+	public function logout(): RedirectResponse
 	{
 		auth()->logout();
 

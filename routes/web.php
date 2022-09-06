@@ -31,20 +31,10 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-	Route::get('/movies/manage', [MoviesController::class, 'index'])->name('manage.movies');
-	Route::view('/movies', 'admin.posts.add-movie')->name('add.movie');
-	Route::post('/movies/create', [MoviesController::class, 'store'])->name('post.movie');
-	Route::get('/movies/{movie}/edit', [MoviesController::class, 'edit'])->name('edit.movie');
-	Route::patch('/movies/{movie}', [MoviesController::class, 'update'])->name('update.movie');
-	Route::delete('/movies/{movie}', [MoviesController::class, 'destroy'])->name('delete.movie');
+	Route::resource('movies', MoviesController::class);
 
-	Route::get('/quote/manage', [QuotesController::class, 'index'])->name('manage.quote');
 	Route::get('/quote/manage/{movie}', [QuotesController::class, 'movie'])->name('see.quotes');
-	Route::view('/quote', 'admin.posts.add-quote')->name('create.quote');
-	Route::post('/quote-create', [QuotesController::class, 'store'])->name('post.quote');
-	Route::get('/quote/{quote}/edit', [QuotesController::class, 'edit'])->name('edit.quote');
-	Route::patch('/quote/{quote}', [QuotesController::class, 'update'])->name('update.quote');
-	Route::delete('/quote/{quote}', [QuotesController::class, 'destroy'])->name('delete.quote');
+	Route::resource('quote', QuotesController::class);
 
-	Route::post('logout', [SessionsController::class, 'destroy'])->name('admin.logout');
+	Route::post('logout', [SessionsController::class, 'logout'])->name('admin.logout');
 });

@@ -17,7 +17,7 @@ class QuoteUpdateRequest extends FormRequest
 			'quote_en'                 => 'required',
 			'quote_ka'                 => 'required',
 			'thumbnail'                => 'image',
-			'title_id'                 => 'required|exists:movies,id',
+			'movie_id'                 => 'required|exists:movies,id',
 		];
 	}
 }
