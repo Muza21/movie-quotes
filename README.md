@@ -15,6 +15,10 @@ This website has two sides, one is for guests, and one is for users(admin).
 Guests can only see quotes randomly and check all quotes of a movie by clicking the movie title. As for users(admin), they can do CRUD(create, read, update, delete) operations as well.
 The quotes can be seen randomly by refreshing the main page.
 The users can register only by the terminal. For further information on how to use this website please check [getting started](#getting-started).
+<p align="center">
+  <img src="public/images/Screenshot from 2022-09-07 12-26-19.png" width="350" title="hover text">
+</p>
+<!-- ![alt text](public/images/Screenshot from 2022-09-07 12-26-19.png) -->
 
 ## Prerequisites
 
@@ -28,6 +32,7 @@ The users can register only by the terminal. For further information on how to u
 
  - [Laravel@9.x](https://laravel.com/docs/9.x) - back-end framework
  - [Spatie Translatable](https://spatie.be/docs/laravel-translatable/v6/introduction) - package for translation
+ - ["tailwindcss"](https://tailwindcss.com/docs/installation) - front-end
 
 ## Getting started
 
@@ -65,26 +70,7 @@ php artisan storage:link
 ```sh
 cp .env.example .env
 ```
-And now you should provide **.env** file all the necessary environment variables:
-
-#
-**MYSQL:**
->DB_CONNECTION=mysql
-
->DB_HOST=127.0.0.1
-
->DB_PORT=3306
-
->DB_DATABASE=*****
-
->DB_USERNAME=*****
-
->DB_PASSWORD=*****
-
-
-#
-**FILESYSTEM_DISK:**
->FILESYSTEM_DISK=public
+And now you should provide **.env** file all the necessary environment variables.
 
 after setting up **.env** file, execute:
 ```sh
