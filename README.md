@@ -31,8 +31,7 @@ The users can register only by the terminal. For further information on how to u
 
 
  - [Laravel@9.x](https://laravel.com/docs/9.x) - back-end framework
- - [Spatie Translatable](https://spatie.be/docs/laravel-translatable/v6/introduction) - package for translation
- - ["tailwindcss"](https://tailwindcss.com/docs/installation) - front-end
+ - [tailwindcss](https://tailwindcss.com/docs/installation) - front-end
 
 ## Getting started
 
