@@ -60,6 +60,7 @@ Then you need to add storage to public link:
 php artisan storage:link
 ```
 
+
 4\. Now we need to set our env file. Go to the root of your project and execute this command.
 ```sh
 cp .env.example .env
@@ -91,10 +92,15 @@ php artisan config:cache
 ```
 in order to cache environment variables.
 
+```sh
+php artisan migrate
+```
+
 4\. Now execute in the root of your project following:
 ```sh
   php artisan key:generate
 ```
+
 Which generates auth key.
 
 ##### Now, you should be good to go!
